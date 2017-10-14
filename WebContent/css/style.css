@@ -7,6 +7,16 @@
 /*=========================================== 
  * Importing CSS Libraries
  *===========================================*/
+ 
+ /* BEGIN CUSTOM CSS */
+ 
+ .texto-branco
+ {
+ 	color: #fff;
+ }
+ 
+ /* END CUSTOM CSS */
+ 
 article,
 aside,
 details,

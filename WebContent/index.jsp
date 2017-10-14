@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
 	<head>
-		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 		
@@ -47,8 +49,8 @@
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.html"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="products.html">AcessÃ³rios</a></li>
-							<li class="menu-item"><a href="products.html">PromoÃ§Ãµes</a></li>
+							<li class="menu-item"><a href="products.html">Acessórios</a></li>
+							<li class="menu-item"><a href="products.html">Promoções</a></li>
 							<li class="menu-item"><a href="products.html">PC</a></li>
 							<li class="menu-item"><a href="products.html">Playstation</a></li>
 							<li class="menu-item"><a href="products.html">Xbox</a></li>
@@ -74,7 +76,7 @@
 								<h2 class="slide-title">Kill Zone 3</h2>
 								<small class="slide-subtitle">R$ 190,00</small>
 								
-								<p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+								<p class="texto-branco">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
 								
 								<a href="cart.html" class="button">Comprar</a>
 							</div>
@@ -88,7 +90,7 @@
 								<h2 class="slide-title">Need for Speed: Rivals</h2>
 								<small class="slide-subtitle">R$ 190,00</small>
 								
-								<p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+								<p class="texto-branco">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
 								
 								<a href="cart.html" class="button">Comprar</a>
 							</div>
@@ -102,7 +104,7 @@
 								<h2 class="slide-title">Call of Duty: Ghosts</h2>
 								<small class="slide-subtitle">R$ 190,00</small>
 								
-								<p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+								<p class="texto-branco">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
 								
 								<a href="cart.html" class="button">Comprar</a>
 							</div>

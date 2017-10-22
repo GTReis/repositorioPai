@@ -32,7 +32,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="image/logo.png" alt="" class="logo" height="50" width="200">
 						<!--div class="logo-text">
 							<h1 class="site-title">The Division Games</h1>
@@ -48,7 +48,7 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.html"><i class="icon-home"></i></a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="products.html">Acessórios</a></li>
 							<li class="menu-item"><a href="products.html">Promoções</a></li>
 							<li class="menu-item"><a href="products.html">PC</a></li>
@@ -183,7 +183,7 @@
 
 						<section>
 							<header>
-								<h2 class="section-title">PromoÃ§Ã£o</h2>
+								<h2 class="section-title">Promoção</h2>
 								<a href="#" class="all">Mostrar Todos</a>
 							</header>
 
@@ -256,10 +256,10 @@
 					<div class="row">
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">InformaÃ§Ã£o</h3>
+								<h3 class="widget-title">Informação</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Mapa do Site</a></li>
-									<li><a href="#">Sobre nÃ³s</a></li>
+									<li><a href="#">Sobre nós</a></li>
 									<li><a href="#">FAQ</a></li>
 									<li><a href="#">Politica de Privacidade</a></li>
 									<li><a href="#">Contato</a></li>
@@ -268,9 +268,9 @@
 						</div> <!-- column -->
 						<div class="col-md-2">
 							<div class="widget">
-								<h3 class="widget-title">ServiÃ§os</h3>
+								<h3 class="widget-title">Serviços</h3>
 								<ul class="no-bullet">
-									<li><a href="#">SeguranÃ§a</a></li>
+									<li><a href="#">Segurança</a></li>
 									<li><a href="#">Remessas e Retornos</a></li>
 									<li><a href="#">Remesas</a></li>
 									<li><a href="#">Retornos</a></li>
@@ -283,7 +283,7 @@
 								<h3 class="widget-title">Minha Conta</h3>
 								<ul class="no-bullet">
 									<li><a href="#">Login/Cadastrar-se</a></li>
-									<li><a href="#">ConfiguraÃ§Ãµes</a></li>
+									<li><a href="#">Configurações</a></li>
 									<li><a href="#">Carrinho de Compras</a></li>
 									<!--li><a href="#">Order Tracking</a></li-->
 									<li><a href="#">Logout</a></li>

@@ -10,8 +10,8 @@ public class Conexao {
 		
 		String host = "localhost";
 		String user = "root";
-		String password = null;
-		String db = "test";
+		String password = "1234";
+		String db = "the_division_games";
 		
 		try 
 		{

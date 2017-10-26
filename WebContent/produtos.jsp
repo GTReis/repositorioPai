@@ -1,5 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,11 +29,13 @@
 
 
 	<body>
+	
+		<jsp:useBean id="dao" class="com.thedivisiongames.dao.ProdutoDAO"/>
 		
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="index.jsp" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">Company name</h1>
@@ -38,7 +44,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="cart.html" class="cart"><i class="icon-cart"></i> 0 items in cart</a>
+						<a href="carrinho.jsp" class="cart"><i class="icon-cart"></i> 0 items in cart</a>
 						<a href="#">My Account</a>
 						<a href="#">Logout <small>(John Smith)</small></a>
 					</div> <!-- .right-section -->
@@ -46,7 +52,7 @@
 					<div class="main-navigation">
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.html"><i class="icon-home"></i></a></li>
+							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
 							<li class="menu-item"><a href="products.html">Accessories</a></li>
 							<li class="menu-item"><a href="products.html">Promotions</a></li>
 							<li class="menu-item"><a href="products.html">PC</a></li>
@@ -64,7 +70,7 @@
 
 					<div class="breadcrumbs">
 						<div class="container">
-							<a href="index.html">Home</a>
+							<a href="index.jsp">Home</a>
 							<span>Play Station Games</span>
 						</div>
 					</div>
@@ -115,104 +121,23 @@
 						</div> <!-- .filter-bar -->
 						
 						<div class="product-list">
+						
+						<c:forEach var="produto" items="${dao.lancamentos}">
+						
 								<div class="product">
-									<div class="inner-product">
+									<div id="produto-min-height-530px" class="inner-product">
 										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-1.jpg" alt="Game 1"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Alpha Protocol</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
+											<a href="produto.jsp?id=${produto.id}"><img src="BuscaImagem?id=${produto.id}" alt="${produto.nome}" height="250" width="200"></a>
+											</div>
+										<h3 class="product-title"><a href="#">${produto.nome}</a></h3>
+										<small class="price"><fmt:formatNumber type="currency" value="${produto.valor}" /></small>
+										<p>${fn:substring(produto.descricao,0,75)}...</p>
 										<a href="#" class="button">Add to cart</a>
 										<a href="#" class="button muted">Read Details</a>
 									</div>
 								</div> <!-- .product -->
 
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-2.jpg" alt="Game 2"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Grand Theft Auto V</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Add to cart</a>
-										<a href="#" class="button muted">Read Details</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-3.jpg" alt="Game 3"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Need for Speed rivals</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Add to cart</a>
-										<a href="#" class="button muted">Read Details</a>
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-4.jpg" alt="Game 4"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Big game hunter</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Add to cart</a>
-										<a href="#" class="button muted">Read Details</a>
-									</div>
-								</div> <!-- .product -->
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-5.jpg" alt="Game 1"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Watch Dogs</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Add to cart</a>
-										<a href="#" class="button muted">Read Details</a>
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-6.jpg" alt="Game 2"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Mortal Kombat X</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Add to cart</a>
-										<a href="#" class="button muted">Read Details</a>
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-7.jpg" alt="Game 3"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Metal Gear Solid V</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Add to cart</a>
-										<a href="#" class="button muted">Read Details</a>
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="dummy/game-8.jpg" alt="Game 4"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Nascar '14</a></h3>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Add to cart</a>
-										<a href="#" class="button muted">Read Details</a>
-									</div>
-								</div> <!-- .product -->
+						</c:forEach>
 								
 						</div> <!-- .product-list -->
 

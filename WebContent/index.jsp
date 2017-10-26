@@ -1,7 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="pt-br">
+<html lang="en-US">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +20,6 @@
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css">
-		<link rel="stylesheet" href="css/bootstrap.css">
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -28,6 +30,8 @@
 
 
 	<body class="slider-collapse">
+	
+		<jsp:useBean id="dao" class="com.thedivisiongames.dao.ProdutoDAO"/>
 		
 		<div id="site-content">
 			<div class="site-header">
@@ -41,7 +45,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						<a href="cart.html" class="cart"><i class="icon-cart"></i> 0 itens no carrinho</a>
+						<a href="carrinho.jsp" class="cart"><i class="icon-cart"></i> 0 itens no carrinho</a>
 						<a href="#" class="login-button">Login/Cadastrar</a>
 					</div> <!-- .right-section -->
 
@@ -49,17 +53,20 @@
 						<button class="toggle-menu"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="products.html">Acessórios</a></li>
-							<li class="menu-item"><a href="products.html">Promoções</a></li>
+							<li class="menu-item"><a href="lancamentos.jsp">Lançamentos</a></li>
+							<li class="menu-item"><a href="promocoes.jsp">Promoções</a></li>
 							<li class="menu-item"><a href="products.html">PC</a></li>
-							<li class="menu-item"><a href="products.html">Playstation</a></li>
-							<li class="menu-item"><a href="products.html">Xbox</a></li>
+							<li class="menu-item"><a href="products.html">PS3</a></li>
+							<li class="menu-item"><a href="products.html">PS4</a></li>
+							<li class="menu-item"><a href="products.html">XBOX 360</a></li>
+							<li class="menu-item"><a href="products.html">XBOX ONE</a></li>
 							<li class="menu-item"><a href="products.html">Wii</a></li>
+							<li class="menu-item"><a href="products.html">Switch</a></li>
 						</ul> <!-- .menu -->
 						<div class="search-form">
 							<form action="">
 								<label><i class="fa fa-lg fa-search"></i></label>
-								<input type="text" placeholder="Pesquise..." autocomplete>
+								<input type="text" placeholder="O que você procura?">
 							</form>
 						</div> <!-- .search-form -->
 
@@ -78,7 +85,7 @@
 								
 								<p class="texto-branco">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
 								
-								<a href="cart.html" class="button">Comprar</a>
+								<a href="carrinho.jsp" class="button">Comprar</a>
 							</div>
 
 							<img src="image/killzone.jpg" class="slide-image" width="300">
@@ -92,7 +99,7 @@
 								
 								<p class="texto-branco">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
 								
-								<a href="cart.html" class="button">Comprar</a>
+								<a href="carrinho.jsp" class="button">Comprar</a>
 							</div>
 
 							<img src="image/needforspeed.jpg" class="slide-image" width="300">
@@ -106,7 +113,7 @@
 								
 								<p class="texto-branco">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
 								
-								<a href="cart.html" class="button">Comprar</a>
+								<a href="carrinho.jsp" class="button">Comprar</a>
 							</div>
 
 							<img src="image/callofduty.jpg" class="slide-image" width="300">
@@ -120,62 +127,28 @@
 					<div class="page">
 						<section>
 							<header>
-								<h2 class="section-title">Novos Produtos</h2>
+								<h2 class="section-title">Lançamentos</h2>
 								<a href="#" class="all">Mostrar Todos</a>
 							</header>
 
+
 							<div class="product-list">
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/alphaprotocol.jpg" alt="Game 1" height="250" width="200"></a>
+							
+								<c:forEach var="produto" items="${dao.lancamentos}">
+							
+									<div class="product">
+										<div id="produto-min-height-530px" class="inner-product">
+											<div class="figure-image">
+												<a href="Produto?id=${produto.id}"><img src="BuscaImagem?id=${produto.id}" alt="${produto.nome}" height="250"></a>
+											</div>
+											<h3 class="product-title"><a href="#">${produto.nome}</a></h3>
+											<small class="price"><fmt:formatNumber type="currency" value="${produto.valor}" /></small>
+											<p>${fn:substring(produto.descricao,0,75)}...</p>
+											<a href="carrinho.jsp" class="button">Comprar</a>
 										</div>
-										<h3 class="product-title"><a href="#">Alpha Protocol</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/gta5.jpeg" alt="Game 2" height="250" width="200"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Grand Theft Auto V</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/needforspeed.jpg" alt="Game 3" height="250" width="200"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Need for Speed rivals</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
-
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/bighunter.png" alt="Game 4" height="250" width="200"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Big game hunter</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
+									</div> <!-- .product -->
+									
+								</c:forEach>
 
 							</div> <!-- .product-list -->
 
@@ -183,67 +156,30 @@
 
 						<section>
 							<header>
-								<h2 class="section-title">Promoção</h2>
+								<h2 class="section-title">Promoções</h2>
 								<a href="#" class="all">Mostrar Todos</a>
 							</header>
 
 							<div class="product-list">
 								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/watchdogs.jpg" alt="Game 1" height="250" width="200"></a>
+								<c:forEach var="produto" items="${dao.promocoes}">
+							
+									<div class="product">
+										<div id="produto-min-height-530px" class="inner-product">
+											<div class="figure-image">
+												<a href="Produto?id=${produto.id}"><img src="BuscaImagem?id=${produto.id}" alt="${produto.nome}" height="250"></a>
+											</div>
+											<h3 class="product-title"><a href="#">${produto.nome}</a></h3>
+											<small class="price"><fmt:formatNumber type="currency" value="${produto.valor}" /></small>
+											
+											<p>${fn:substring(produto.descricao,0,75)}...</p>
+											
+											<a href="carrinho.jsp" class="button">Comprar</a>
 										</div>
-										<h3 class="product-title"><a href="#">Watch Dogs</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/mortalkombat.jpeg" alt="Game 2" height="250" width="200"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Mortal Kombat X</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/metalgear.jpg" alt="Game 3" height="250" width="200"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Metal Gear Solid V</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
-								
-								
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<a href="single.html"><img src="image/nascar14.jpg" alt="Game 4" height="250" width="200"></a>
-										</div>
-										<h3 class="product-title"><a href="#">Nascar '14</a></h3>
-										<small class="price">R$ 19,00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="cart.html" class="button">Comprar</a>
-										<!--a href="#" class="button muted">Read Details</a-->
-									</div>
-								</div> <!-- .product -->
-								
+									</div> <!-- .product -->
+									
+								</c:forEach>
+
 							</div> <!-- .product-list -->
 
 						</section>

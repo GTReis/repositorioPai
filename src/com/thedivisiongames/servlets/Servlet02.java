@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.thedivisiongames.dao.Conexao;
+import com.thedivisiongames.dao.ConexaoTheDivisionGames;
 import com.thedivisiongames.entidade.Produto;
 import com.thedivisiongames.entidade.Imagem;
 import com.thedivisiongames.dao.ImagemDAO;
@@ -45,9 +45,9 @@ public class Servlet02 extends HttpServlet {
 		
 		try 
 		{
-			Connection con = Conexao.conectaBD();
+			Connection con = ConexaoTheDivisionGames.conectaBD();
 			
-			PreparedStatement stmt = con.prepareStatement("SELECT prod.*, est.valor FROM tb_produto prod INNER JOIN tb_estoque est ON prod.id_produto = est.id_produto WHERE prod.id_produto = ?");
+			PreparedStatement stmt = con.prepareStatement("SELECT * FROM tb_produto WHERE id_produto = ?");
 			stmt.setLong(1, Long.valueOf(id_produto));
 			ResultSet rs = stmt.executeQuery();
 
@@ -60,13 +60,13 @@ public class Servlet02 extends HttpServlet {
 					produto.setGenero(rs.getString("genero_produto"));
 					produto.setPlataforma(rs.getString("plataforma_produto"));
 					produto.setValor(rs.getDouble("valor"));
+					produto.setFornecedor("The Division Games");
 					
 					request.setAttribute("produto", produto);
 					
-					ImagemDAO imagem = new ImagemDAO();
-					
-					List<Imagem> lista = new ArrayList<Imagem>();
-					/* Método para capturar imagens que não são a capa do jogo para popular a galeria de imagens na tela de produto */
+				/* Captura imagens que não são a capa do jogo para popular a galeria de imagens na tela de produto */
+				ImagemDAO imagem = new ImagemDAO();
+				List<Imagem> lista = new ArrayList<Imagem>();
 					lista = imagem.galeria(id_produto);
 					
 					request.setAttribute("imagem", lista);

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.thedivisiongames.dao.Conexao;
+import com.thedivisiongames.dao.ConexaoTheDivisionGames;
 
 /**
  * Servlet implementation class Servlet02
@@ -36,7 +36,7 @@ public class Servlet03 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 
-		Connection con = Conexao.conectaBD();
+		Connection con = ConexaoTheDivisionGames.conectaBD();
 		try {
 			PreparedStatement stmt = con.prepareStatement("SELECT imagem FROM tb_imagem WHERE id_imagem = ? AND flg_capa = 'N' ");
 

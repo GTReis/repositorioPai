@@ -1,7 +1,64 @@
 package com.thedivisiongames.entidade;
 
-public class Produto {
+import java.util.Comparator;
+import java.util.Date;
 
+public class Produto implements Comparable<Produto>
+{
+	
+	@Override
+	public int compareTo(Produto prod) 
+	{
+		if (this.id < prod.getId()) {
+            return -1;
+        }
+        if (this.id > prod.getId()) {
+            return 1;
+        }
+        return compareTo2(prod);
+	}
+	
+	public int compareTo2(Produto prod) 
+	{
+		if (this.valor < prod.getValor()) {
+            return -1;
+        }
+        if (this.valor > prod.getValor()) {
+            return 1;
+        }
+        return 0;
+	}
+	
+	public static Comparator<Produto> OrdenaMaiorValor = new Comparator<Produto>() 
+	{
+        @Override
+        public int compare(Produto prod1, Produto prod2) 
+        {
+        	if (prod1.valor > prod2.getValor()) {
+  	          return 1;
+	  	     }
+	  	     if (prod1.valor < prod2.getValor()) {
+	  	          return -1;
+	  	     }
+	  	     return 0;
+        }
+    };
+
+	public static Comparator<Produto> OrdenaMaiorData = new Comparator<Produto>() 
+	{
+        @Override
+        public int compare(Produto prod1, Produto prod2) 
+        {
+        	if (prod1.data.before(prod2.getData())) {
+  	          return 1;
+	  	     }
+	  	     if (prod1.data.after(prod2.getData())) {
+	  	          return -1;
+	  	     }
+	  	     return 0;
+        }
+    };
+    
 	int id;
 	String nome;
 	String descricao;
@@ -9,7 +66,21 @@ public class Produto {
 	String flg_ativo;
 	String plataforma;
 	Double valor;
+	Date data;
+	String fornecedor;
 	
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
+	}
+	public String getFornecedor() {
+		return fornecedor;
+	}
+	public void setFornecedor(String fornecedor) {
+		this.fornecedor = fornecedor;
+	}
 	public Double getValor() {
 		return valor;
 	}
@@ -51,6 +122,5 @@ public class Produto {
 	}
 	public void setFlg_ativo(String flg_ativo) {
 		this.flg_ativo = flg_ativo;
-	}
-	
+	}	
 }

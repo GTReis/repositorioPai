@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<!-- referencia a uri das taglibs do JSTL (que devem estar dentro pasta WEB-INF/lib) e adiciona o 
+	respectivo prefixo para ser invocado-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -30,7 +33,7 @@
 
 
 	<body class="slider-collapse">
-	
+		<!-- atribui as propriedades da classe ao id dao -->
 		<jsp:useBean id="dao" class="com.thedivisiongames.dao.ProdutoDAO"/>
 		
 		<div id="site-content">
@@ -134,7 +137,7 @@
 
 							<div class="product-list">
 							
-								<c:forEach var="produto" items="${dao.lancamentos}">
+								<c:forEach var="produto" items="${dao.lancamentos}" begin="0" end="3"><!-- begin="0" end="3" -->
 							
 									<div class="product">
 										<div id="produto-min-height-530px" class="inner-product">
@@ -142,6 +145,7 @@
 												<a href="Produto?id=${produto.id}"><img src="BuscaImagem?id=${produto.id}" alt="${produto.nome}" height="250"></a>
 											</div>
 											<h3 class="product-title"><a href="#">${produto.nome}</a></h3>
+											<p>${produto.fornecedor}</p>
 											<small class="price"><fmt:formatNumber type="currency" value="${produto.valor}" /></small>
 											<p>${fn:substring(produto.descricao,0,75)}...</p>
 											<a href="carrinho.jsp" class="button">Comprar</a>

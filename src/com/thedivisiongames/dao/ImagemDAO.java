@@ -11,7 +11,7 @@ import com.thedivisiongames.entidade.Imagem;
 
 public class ImagemDAO {
 
-	private Connection con = Conexao.conectaBD();
+	private Connection con = ConexaoTheDivisionGames.conectaBD();
 	
 	public List<Imagem> galeria(String id)
 	{

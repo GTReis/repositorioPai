@@ -37,11 +37,7 @@
 			<div class="site-header">
 				<div class="container">
 					<a href="index.jsp" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
-						<div class="logo-text">
-							<h1 class="site-title">Company name</h1>
-							<small class="site-description">Tagline goes here</small>
-						</div>
+						<img src="image/logo.png" alt="" class="logo" height="50" width="200">
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
@@ -132,7 +128,7 @@
 						
 						<section>
 							<header>
-								<h2 class="section-title">Produto Similares</h2>
+								<h2 class="section-title">Produtos Similares</h2>
 							</header>
 							<div class="product-list">
 								<div class="product">

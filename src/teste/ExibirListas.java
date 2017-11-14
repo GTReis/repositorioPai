@@ -10,9 +10,9 @@ public class ExibirListas {
 	public static void main(String[] args) {
 		
 		listaTodos();
-		
 	}
 	
+//	@SuppressWarnings("unused")
 	private static void listaTodos()
 	{
 		
@@ -25,10 +25,7 @@ public class ExibirListas {
 			System.out.println("Nome: "+prod.getNome());
 			System.out.println("Valor: "+prod.getValor());
 			System.out.println("Fornecedor: "+prod.getFornecedor());
-			
 		}
-		
+//		System.out.println(lista.get(7).getNome());
 	}
-	
-	
 }

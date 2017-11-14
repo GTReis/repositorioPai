@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoUzGames {
+public class ConexaoJunkGames {
 	
 	public static Connection con = null;
 	
@@ -22,7 +22,7 @@ public class ConexaoUzGames {
 		
 		try 
 		{
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/uz_games","root","1234");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/junk_games","root","1234");
 		} 
 		catch (SQLException e) 
 		{

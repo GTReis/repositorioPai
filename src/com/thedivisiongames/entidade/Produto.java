@@ -29,7 +29,7 @@ public class Produto implements Comparable<Produto>
         return 0;
 	}
 	
-	public static Comparator<Produto> OrdenaMaiorValor = new Comparator<Produto>() 
+	public static Comparator<Produto> OrdenaMenorValor = new Comparator<Produto>() 
 	{
         @Override
         public int compare(Produto prod1, Produto prod2) 

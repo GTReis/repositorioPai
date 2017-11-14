@@ -11,8 +11,10 @@
 		});
 
 		$(".home-slider").flexslider({
+			animation: "fade",
 			controlNav: true,
-			directionNav: false
+			directionNav: false,
+			pauseOnHover: true
 		});
 
 		$(".login-button").on("click",function(){

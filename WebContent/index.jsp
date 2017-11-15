@@ -40,11 +40,8 @@
 	<div id="site-content">
 		<div class="site-header">
 			<div class="container">
-				<a href="index.jsp" id="branding"> <img src="image/logo.png"
-					alt="" class="logo" height="50" width="200"> <!--div class="logo-text">
-							<h1 class="site-title">The Division Games</h1>
-							<small class="site-description">Entretenimento</small>
-						</div-->
+				<a href="index.jsp" id="branding">
+					<img src="image/logo.png" alt="" class="logo" height="50" width="200">
 				</a>
 				<!-- #branding -->
 
@@ -198,7 +195,6 @@
 								<p>${produto.fornecedor}</p>
 								<small class="price"><fmt:formatNumber type="currency"
 										value="${produto.valor}" /></small>
-								<p>${fn:substring(produto.descricao,0,75)}...</p>
 								<a href="carrinho.jsp" class="button">Comprar</a>
 							</div>
 						</div>
@@ -231,9 +227,6 @@
 								<p>${produto.fornecedor}</p>
 								<small class="price"><fmt:formatNumber type="currency"
 										value="${produto.valor}" /></small>
-
-								<p>${fn:substring(produto.descricao,0,75)}...</p>
-
 								<a href="carrinho.jsp" class="button">Comprar</a>
 							</div>
 						</div>
@@ -374,7 +367,6 @@
 		<c:remove var="erro" scope="session" />
 		
 	</c:if>
-
 
 </body>
 

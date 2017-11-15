@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" %>
+
+<!-- referencia a uri das taglibs do JSTL (que devem estar dentro pasta WEB-INF/lib) e adiciona o 
+	respectivo prefixo para ser invocado-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +15,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-<title>The Division Games - Carrinho de Compras</title>
+<title>The Division Games</title>
 
 <!-- Loading third party fonts -->
 <link href="http://fonts.googleapis.com/css?family=Roboto:400,700|"
@@ -31,21 +40,30 @@
 	<div id="site-content">
 		<div class="site-header">
 			<div class="container">
-				<a href="index.jsp" id="branding"> <img src="images/logo.png"
-					alt="" class="logo">
-					<div class="logo-text">
-						<h1 class="site-title">Company name</h1>
-						<small class="site-description">Tagline goes here</small>
-					</div>
+				<a href="index.jsp" id="branding">
+					<img src="image/logo.png" alt="" class="logo" height="50" width="200">
 				</a>
 				<!-- #branding -->
 
+				<!-- Area de Login -->
+
 				<div class="right-section pull-right">
-					<a href="cart.html" class="cart"><i class="icon-cart"></i> 0
-						items in cart</a> <a href="#">My Account</a> <a href="#">Logout <small>(John
-							Smith)</small></a>
+					<a href="carrinho.jsp" class="cart"> <i class="icon-cart"></i>
+						0 itens no carrinho
+					</a>
+					
+					<c:if test="${empty sessionScope.nome}">
+						<a href="#" class="login-button">Login/Cadastrar</a>
+					</c:if>
+					
+					<c:if test="${not empty sessionScope.nome}">
+						<a href="#">Minha Conta</a>
+						<a href="Logout">Logout <small>(<c:out value="${sessionScope.nome}" />)</small></a>
+					</c:if> 
 				</div>
 				<!-- .right-section -->
+				
+				<!-- Fim Area de Login -->
 
 				<div class="main-navigation">
 					<button class="toggle-menu">
@@ -265,25 +283,32 @@
 
 	<div class="overlay"></div>
 
-	<div class="auth-popup popup">
+	<div id="popup-login" class="auth-popup popup">
 		<a href="#" class="close"><i class="fa fa-times"></i></a>
 		<div class="row">
 			<div class="col-md-6">
 				<h2 class="section-title">Login</h2>
-				<form action="#">
-					<input type="text" placeholder="Username..."> <input
-						type="password" placeholder="Password..."> <input
-						type="submit" value="Login">
+
+				<form action="ValidaLogin" method="POST">
+					<input type="text" name="inputEmail" placeholder="email@exemplo.com">
+					<input type="password" name="inputSenha" placeholder="Senha">
+					
+					<c:if test="${not empty sessionScope.erro}">
+						<p id="msg-erro"><c:out value="${sessionScope.erro}" /></p>
+					</c:if>
+					
+					<input type="submit" value="Login">
 				</form>
 			</div>
 			<!-- .column -->
 			<div class="col-md-6">
-				<h2 class="section-title">Create an account</h2>
-				<form action="#">
-					<input type="text" placeholder="Username..."> <input
-						type="text" placeholder="Email address..."> <input
-						type="submit" value="register">
-				</form>
+				<h2 class="section-title">Ainda não sou cliente</h2>
+				<div class="row">
+					<div class="col-md-12">
+						<p>Cadastre-se aqui para receber nossas ofertas.</p>
+						<a class="btn btn-primary btn-block" href="formulario.jsp">Cadastrar</a>
+					</div>
+				</div>
 			</div>
 			<!-- .column -->
 		</div>
@@ -294,6 +319,18 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/app.js"></script>
+
+	<c:if test="${not empty sessionScope.erro}">
+	
+		<script>
+			$(document).ready(function(){
+			    $(".login-button").click();
+			});
+		</script>	
+		
+		<c:remove var="erro" scope="session" />
+		
+	</c:if>
 
 </body>
 

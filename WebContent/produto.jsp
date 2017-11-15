@@ -45,12 +45,25 @@
 				</a>
 				<!-- #branding -->
 
+				<!-- Area de Login -->
+
 				<div class="right-section pull-right">
-					<a href="cart.html" class="cart"><i class="icon-cart"></i> 0
-						items in cart</a> <a href="#">My Account</a> <a href="#">Logout <small>(John
-							Smith)</small></a>
+					<a href="carrinho.jsp" class="cart"> <i class="icon-cart"></i>
+						0 itens no carrinho
+					</a>
+					
+					<c:if test="${empty sessionScope.nome}">
+						<a href="#" class="login-button">Login/Cadastrar</a>
+					</c:if>
+					
+					<c:if test="${not empty sessionScope.nome}">
+						<a href="#">Minha Conta</a>
+						<a href="Logout">Logout <small>(<c:out value="${sessionScope.nome}" />)</small></a>
+					</c:if> 
 				</div>
 				<!-- .right-section -->
+				
+				<!-- Fim Area de Login -->
 
 				<div class="main-navigation">
 					<button class="toggle-menu">
@@ -338,6 +351,8 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/app.js"></script>
+
+	
 
 </body>
 

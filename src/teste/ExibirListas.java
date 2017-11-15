@@ -9,10 +9,11 @@ public class ExibirListas {
 
 	public static void main(String[] args) {
 		
-		listaTodos();
+		//listaTodos();
+		
 	}
 	
-//	@SuppressWarnings("unused")
+	@SuppressWarnings("unused")
 	private static void listaTodos()
 	{
 		

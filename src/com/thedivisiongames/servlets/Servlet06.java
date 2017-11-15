@@ -39,12 +39,17 @@ public class Servlet06 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		// Recupera a sessão que está ativa
 		HttpSession sessao = request.getSession();
 		
+		// Remove os atributos inseridos na sessão
 		sessao.removeAttribute("nome");
 		sessao.removeAttribute("erro");
+		
+		// Invalida a sessão
 		sessao.invalidate();
 		
+		// Redireciona para a página index.jsp
 		response.sendRedirect("index.jsp");
 	}
 }

@@ -25,6 +25,7 @@
 <link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 
 <!-- Loading main css file -->
+<link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/normalize.css">
 
@@ -195,7 +196,7 @@
 								<p>${produto.fornecedor}</p>
 								<small class="price"><fmt:formatNumber type="currency"
 										value="${produto.valor}" /></small>
-								<a href="carrinho.jsp" class="button">Comprar</a>
+								<a href="carrinho.jsp" class="button buy">Comprar</a>
 							</div>
 						</div>
 						<!-- .product -->
@@ -227,7 +228,7 @@
 								<p>${produto.fornecedor}</p>
 								<small class="price"><fmt:formatNumber type="currency"
 										value="${produto.valor}" /></small>
-								<a href="carrinho.jsp" class="button">Comprar</a>
+								<a href="carrinho.jsp" class="button buy">Comprar</a>
 							</div>
 						</div>
 						<!-- .product -->
@@ -298,19 +299,15 @@
 				</div>
 				<!-- .row -->
 
-				<div class="colophon">
-					<div class="copy">
-						Desenvolvido por <u><b>The Division Games<b></u>
-					</div>
-					<div class="social-links square">
-						<a href="#" class="facebook"><i class="fa fa-facebook"></i></a> <a
-							href="#" class="twitter"><i class="fa fa-twitter"></i></a> <a
-							href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-						<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-					</div>
-					<!-- .social-links -->
-				</div>
-				<!-- .colophon -->
+				<div class="colophon col-md-12 col-sm-12 col-xs-12">
+						<div class="copy col-xs-8 col-sm-6">Desenvolvido por <u><b>The Division Games<b></u></div>
+						<div class="social-links square col-xs-4 col-sm-3 col-md-3">
+							<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+							<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+							<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+						</div> <!-- .social-links -->
+					</div> <!-- .colophon -->
 			</div>
 			<!-- .container -->
 		</div>

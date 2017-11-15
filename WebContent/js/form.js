@@ -35,13 +35,13 @@ $(document).ready(function(){
 		template: '<div class="popover" role="tooltip" style="width: 500px;"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"><div class="data-content"></div></div></div>',
 		trigger: 'hover',
 		html: true,
-		content: '<ul><li>Evite usar seu nome, apelido ou data de nascimento.</li><li>Combine tras maiÃºsculas e minÃºsculas, sÃ­mbolos e nÃºmeros.</li><li>NÃ£o use informaÃ§Ãµes pessoais.</li></ul>',
+		content: '<ul><li>Evite usar seu nome, apelido ou data de nascimento.</li><li>Combine letras maiúsculas e minúsculas, símbolos e números.</li><li>Não use informações pessoais.</li></ul>',
 		placement: 'auto right',
 	}).click(function(event) {
 		$(this).popover('hide');
 	});;
 	$('#cepInput').popover({
-		content: 'Digite apenas nÃºmeros, sem pontos ou traÃ§os.',
+		content: 'Digite apenas números, sem pontos ou traços.',
 		trigger: 'hover',
 		placement: 'auto right',
 		container: 'body'

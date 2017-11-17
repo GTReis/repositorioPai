@@ -34,23 +34,51 @@
 
     <body>
 
-        <!-- jsp:useBean id="dao" class="com.thedivisiongames.dao.ProdutoDAO"/-->
-
-
-        <div id="site-content">
-            <div class="site-header">
-                <div class="container">
-                    <a href="index.jsp" id="branding">
-                        <img src="image/logo.png" alt="" class="logo" height="50" width="200">
-                    </a>
-                    <!-- #branding -->
-
-                    <!-- Area de Login -->
-
-                    <div class="right-section pull-right">
-                        <a href="carrinho.jsp" class="cart"> <i class="icon-cart"></i>
-                            0 itens no carrinho
-                        </a>
+	<div id="site-content">
+		<div class="site-header">
+			<div class="container">
+				<a href="index.jsp" id="branding">
+					<img src="image/logo.png" alt="" class="logo" height="50" width="200">
+				</a>
+				
+				<!-- #branding -->
+				
+				<div class="right-section pull-right">
+				
+					<!-- Area Carrinho -->
+					
+					<a href="carrinho.jsp" class="cart"> <i class="icon-cart"></i>
+						<c:if test="${empty sessionScope.produto_carrinho}">
+							0 itens no carrinho
+						</c:if>
+						<c:if test="${(not empty sessionScope.produto_carrinho) && (sessionScope.num_itens_carrinho == 1)}">
+							<c:out value="${sessionScope.num_itens_carrinho}" /> item no carrinho
+						</c:if>
+						<c:if test="${(not empty sessionScope.produto_carrinho) && (sessionScope.num_itens_carrinho > 1)}">
+							<c:out value="${sessionScope.num_itens_carrinho}" /> itens no carrinho
+						</c:if>
+						
+					</a>
+					
+					<!-- Fim Area Carrinho -->
+					
+					<!-- Area de Login -->
+					
+					<!-- verifica se há algum valor na variavel de sessão "nome" definida no servlet e, se estiver vasia
+					exibe Login/Cadastrar -->
+					<c:if test="${empty sessionScope.nome}">
+						<a href="#" class="login-button">Login/Cadastrar</a>
+					</c:if>
+					
+					<!-- se não houver valor na variavel de sessão "nome", exibe opções para fazer login -->
+					<c:if test="${not empty sessionScope.nome}">
+						<a href="#">Minha Conta</a>
+						<a href="Logout">Logout <small>(<c:out value="${sessionScope.nome}" />)</small></a>
+					</c:if> 
+				</div>
+				<!-- .right-section -->
+				
+				<!-- Fim Area de Login -->
 
                         <c:if test="${empty sessionScope.nome}">
                             <a href="#" class="login-button">Login/Cadastrar</a>

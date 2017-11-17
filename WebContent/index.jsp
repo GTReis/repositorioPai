@@ -46,17 +46,34 @@
 				</a>
 				<!-- #branding -->
 
-				<!-- Area de Login -->
-
 				<div class="right-section pull-right">
+				
+					<!-- Area Carrinho -->
+					
 					<a href="carrinho.jsp" class="cart"> <i class="icon-cart"></i>
-						0 itens no carrinho
+						<c:if test="${empty sessionScope.produto_carrinho}">
+							0 itens no carrinho
+						</c:if>
+						<c:if test="${(not empty sessionScope.produto_carrinho) && (sessionScope.num_itens_carrinho == 1)}">
+							<c:out value="${sessionScope.num_itens_carrinho}" /> item no carrinho
+						</c:if>
+						<c:if test="${(not empty sessionScope.produto_carrinho) && (sessionScope.num_itens_carrinho > 1)}">
+							<c:out value="${sessionScope.num_itens_carrinho}" /> itens no carrinho
+						</c:if>
+						
 					</a>
 					
+					<!-- Fim Area Carrinho -->
+					
+					<!-- Area de Login -->
+					
+					<!-- verifica se há algum valor na variavel de sessão "nome" definida no servlet e, se estiver vasia
+					exibe Login/Cadastrar -->
 					<c:if test="${empty sessionScope.nome}">
 						<a href="#" class="login-button">Login/Cadastrar</a>
 					</c:if>
 					
+					<!-- se não houver valor na variavel de sessão "nome", exibe opções para fazer login -->
 					<c:if test="${not empty sessionScope.nome}">
 						<a href="#">Minha Conta</a>
 						<a href="Logout">Logout <small>(<c:out value="${sessionScope.nome}" />)</small></a>
@@ -179,8 +196,7 @@
 
 				<div class="product-list">
 
-					<c:forEach var="produto" items="${dao.lancamentos}" begin="0"
-						end="3">
+					<c:forEach var="produto" items="${dao.lancamentos}" begin="0" end="3">
 
 						<div class="product">
 							<div id="produto-min-height-530px" class="inner-product">
@@ -194,9 +210,10 @@
 								</h3>
 								<p>${produto.plataforma}</p>
 								<p>${produto.fornecedor}</p>
-								<small class="price"><fmt:formatNumber type="currency"
-										value="${produto.valor}" /></small>
-								<a href="carrinho.jsp" class="button buy">Comprar</a>
+								<small class="price">
+									<fmt:formatNumber type="currency" value="${produto.valor}" />
+								</small>
+								<a href="Carrinho?id=${produto.id}&for=${produto.fornecedor}" class="button">Comprar</a>
 							</div>
 						</div>
 						<!-- .product -->
@@ -228,7 +245,7 @@
 								<p>${produto.fornecedor}</p>
 								<small class="price"><fmt:formatNumber type="currency"
 										value="${produto.valor}" /></small>
-								<a href="carrinho.jsp" class="button buy">Comprar</a>
+								<a href="Carrinho?id=${produto.id}&for=${produto.fornecedor}" class="button">Comprar</a>
 							</div>
 						</div>
 						<!-- .product -->
@@ -326,6 +343,7 @@
 					<input type="text" name="inputEmail" placeholder="email@exemplo.com">
 					<input type="password" name="inputSenha" placeholder="Senha">
 					
+					
 					<c:if test="${not empty sessionScope.erro}">
 						<p id="msg-erro"><c:out value="${sessionScope.erro}" /></p>
 					</c:if>
@@ -368,3 +386,5 @@
 </body>
 
 </html>
+<!-- Formatar Data JSTL -->
+<!-- fmt:formatDate value="${contato.data}" pattern="dd/MM/yyyy" /-->

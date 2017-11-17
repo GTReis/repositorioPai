@@ -68,7 +68,52 @@ public class Produto implements Comparable<Produto>
 	Double valor;
 	Date data;
 	String fornecedor;
+	int qdt;
+	String img_capa; // Caminho do arquivo da imagem de capa
+	String img_galeria_1; // Caminho do arquivo da imagem de galeria
+	String img_galeria_2; // Caminho do arquivo da imagem de galeria
+	String img_galeria_3; // Caminho do arquivo da imagem de galeria
 	
+	
+	public int getQdt() {
+		return qdt;
+	}
+
+	public void setQdt(int qdt) {
+		this.qdt = qdt;
+	}
+
+	public String getImg_capa() {
+		return img_capa;
+	}
+
+	public void setImg_capa(String img_capa) {
+		this.img_capa = img_capa;
+	}
+
+	public String getImg_galeria_1() {
+		return img_galeria_1;
+	}
+
+	public void setImg_galeria_1(String img_galeria_1) {
+		this.img_galeria_1 = img_galeria_1;
+	}
+
+	public String getImg_galeria_2() {
+		return img_galeria_2;
+	}
+
+	public void setImg_galeria_2(String img_galeria_2) {
+		this.img_galeria_2 = img_galeria_2;
+	}
+
+	public String getImg_galeria_3() {
+		return img_galeria_3;
+	}
+
+	public void setImg_galeria_3(String img_galeria_3) {
+		this.img_galeria_3 = img_galeria_3;
+	}
 	public Date getData() {
 		return data;
 	}

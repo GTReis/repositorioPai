@@ -137,7 +137,7 @@
 								ipsam voluptatem quia voluptas sit aspernatur aut odit aut
 								fugit, sed quia consequuntur.</p>
 
-							<a href="carrinho.jsp" class="button">Comprar</a>
+							<a href="carrinho.jsp" class="button buy">Comprar</a>
 						</div>
 
 						<img src="image/killzone.jpg" class="slide-image" width="300">
@@ -156,7 +156,7 @@
 								ipsam voluptatem quia voluptas sit aspernatur aut odit aut
 								fugit, sed quia consequuntur.</p>
 
-							<a href="carrinho.jsp" class="button">Comprar</a>
+							<a href="carrinho.jsp" class="button buy">Comprar</a>
 						</div>
 
 						<img src="image/needforspeed.jpg" class="slide-image" width="300">
@@ -175,7 +175,7 @@
 								ipsam voluptatem quia voluptas sit aspernatur aut odit aut
 								fugit, sed quia consequuntur.</p>
 
-							<a href="carrinho.jsp" class="button">Comprar</a>
+							<a href="carrinho.jsp" class="button buy">Comprar</a>
 						</div>
 
 						<img src="image/callofduty.jpg" class="slide-image" width="300">
@@ -213,7 +213,7 @@
 								<small class="price">
 									<fmt:formatNumber type="currency" value="${produto.valor}" />
 								</small>
-								<a href="Carrinho?id=${produto.id}&for=${produto.fornecedor}" class="button">Comprar</a>
+								<a href="Carrinho?id=${produto.id}&for=${produto.fornecedor}" class="button buy">Comprar</a>
 							</div>
 						</div>
 						<!-- .product -->
@@ -245,7 +245,7 @@
 								<p>${produto.fornecedor}</p>
 								<small class="price"><fmt:formatNumber type="currency"
 										value="${produto.valor}" /></small>
-								<a href="Carrinho?id=${produto.id}&for=${produto.fornecedor}" class="button">Comprar</a>
+								<a href="Carrinho?id=${produto.id}&for=${produto.fornecedor}" class="button buy">Comprar</a>
 							</div>
 						</div>
 						<!-- .product -->

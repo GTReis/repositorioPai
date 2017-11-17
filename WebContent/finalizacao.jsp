@@ -40,7 +40,7 @@
 							</div>
 							<div class="f1-step active">
 								<div class="f1-step-icon"><i class="fa fa-user"></i></div>
-								<p>IdentificaÃ§Ã£o</p>
+								<p>Identificação</p>
 							</div>
 							<div class="f1-step">
 								<div class="f1-step-icon"><i class="fa fa-shopping-cart"></i></div>
@@ -59,7 +59,7 @@
 					<div class="page">
 						<div class="f1">
 							<fieldset>
-								<legend>IdentificaÃ§Ã£o</legend>
+								<legend>Identificação</legend>
 								<form class="form-horizontal" method="POST">
 									<div class="form-group">
 										<label class="label-control" for="loginInput">Login</label>

@@ -77,19 +77,6 @@
 					</c:if> 
 				</div>
 				<!-- .right-section -->
-				
-				<!-- Fim Area de Login -->
-
-                        <c:if test="${empty sessionScope.nome}">
-                            <a href="#" class="login-button">Login/Cadastrar</a>
-                        </c:if>
-
-                        <c:if test="${not empty sessionScope.nome}">
-                            <a href="#">Minha Conta</a>
-                            <a href="Logout">Logout <small>(<c:out value="${sessionScope.nome}" />)</small></a>
-                        </c:if> 
-                    </div>
-                    <!-- .right-section -->
 
                     <!-- Fim Area de Login -->
 

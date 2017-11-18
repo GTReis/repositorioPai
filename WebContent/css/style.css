@@ -2398,7 +2398,7 @@ form textarea {
   content: " ";
   width: 7px;
   height: 5px;
-  background: url(../images/arrow.png) no-repeat;
+  background: url(../image/arrow.png) no-repeat;
   display: inline-block;
   margin-left: 10px;
   margin-right: 10px;

@@ -42,6 +42,7 @@ public class Servlet02 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String id_produto = request.getParameter("id");
+        Produto produto = new Produto();
 		
 		try 
 		{
@@ -53,7 +54,7 @@ public class Servlet02 extends HttpServlet {
 
 			if(rs.next())
 			{
-				Produto produto = new Produto();
+				
 					produto.setId(rs.getInt("id_produto"));
 					produto.setNome(rs.getString("nome_produto"));
 					produto.setDescricao(rs.getString("descricao_produto"));
@@ -71,9 +72,10 @@ public class Servlet02 extends HttpServlet {
 					
 					request.setAttribute("imagem", lista);
 			}
+                        
 			stmt.close();
 			rs.close();
-			con.close();
+            con.close();
 		}
 		catch (NumberFormatException | SQLException e) 
 		{

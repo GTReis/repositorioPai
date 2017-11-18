@@ -28,7 +28,7 @@
 		});
 
 		initLightbox({
-	    	selector : '.product-images a',
+	    	selector : '.product-images img',
 	    	overlay: true,
 	    	closeButton: true,
 	    	arrow: true

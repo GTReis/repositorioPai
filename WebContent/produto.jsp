@@ -26,9 +26,9 @@
         <link rel="stylesheet" href="css/style.css">
 
         <!--[if lt IE 9]>
-                        <script src="js/ie-support/html5.js"></script>
-                        <script src="js/ie-support/respond.js"></script>
-                        <![endif]-->
+            <script src="js/ie-support/html5.js"></script>
+            <script src="js/ie-support/respond.js"></script>
+        <![endif]-->
 
     </head>
 
@@ -65,7 +65,7 @@
 
                     <!-- Fim Area de Login -->
 
-                    <div class="main-navigation">
+                    <div id="navbar" class="main-navigation">
                         <button class="toggle-menu">
                             <i class="fa fa-bars"></i>
                         </button>
@@ -82,7 +82,7 @@
                         </ul>
                         <!-- .menu -->
                         <div class="search-form">
-                            <label><img src="images/icon-search.png"></label> <input
+                            <label><img src="image/icon-search.png"></label> <input
                                 type="text" placeholder="Search...">
                         </div>
                         <!-- .search-form -->
@@ -115,16 +115,16 @@
                                             <a href="BuscaImagem?id=${produto.id}"><img
                                                     src="BuscaImagem?id=${produto.id}" alt=""></a>
                                         </figure>
-
+                                        <div class="thumbnails">
                                         <c:forEach var="img" items="${imagem}">
 
-                                            <div class="thumbnails">
+                                            
                                                 <a href="BuscaGaleria?id=${img.id}"><img
                                                         src="BuscaGaleria?id=${img.id}" alt=""></a>
-                                            </div>
+                                            
 
                                         </c:forEach>
-
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-8">
@@ -132,8 +132,9 @@
                                     <div class="addtocart-bar">
                                         <div class="col-md-6 col-xs-10">
                                             <p>vendido por <b>${produto.fornecedor}</b></p>
-                                            <small class="price"><small>por</small><fmt:formatNumber type="currency"
+                                            <small class="price"><small>por </small><fmt:formatNumber type="currency"
                                                       value="${produto.valor}" /></small>
+                                            <span>ou até 2x de R$ 95,00 sem juros</span>
                                         </div>
                                         <div class="col-md-5 col-xs-9">
                                             <button class="button buy single">Comprar</button>

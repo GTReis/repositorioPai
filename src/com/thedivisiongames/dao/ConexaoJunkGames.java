@@ -22,7 +22,7 @@ public class ConexaoJunkGames {
 		
 		try 
 		{
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/junk_games","root","root");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/junk_games","root","1234");
 		} 
 		catch (SQLException e) 
 		{

@@ -83,35 +83,32 @@
 				
 				<!-- Fim Area de Login -->
 
-				<div class="main-navigation">
-					<button class="toggle-menu">
-						<i class="fa fa-bars"></i>
-					</button>
-					<ul class="menu">
-						<li class="menu-item home current-menu-item"><a
-							href="index.jsp"><i class="icon-home"></i></a></li>
-						<li class="menu-item"><a href="lancamentos.jsp">Lançamentos</a></li>
-						<li class="menu-item"><a href="promocoes.jsp">Promoções</a></li>
-						<li class="menu-item"><a href="products.html">PC</a></li>
-						<li class="menu-item"><a href="products.html">PS3</a></li>
-						<li class="menu-item"><a href="products.html">PS4</a></li>
-						<li class="menu-item"><a href="products.html">XBOX 360</a></li>
-						<li class="menu-item"><a href="products.html">XBOX ONE</a></li>
-						<li class="menu-item"><a href="products.html">Wii</a></li>
-						<li class="menu-item"><a href="products.html">Switch</a></li>
-					</ul>
-					<!-- .menu -->
-					<div class="search-form">
-						<form action="">
-							<label><i class="fa fa-lg fa-search"></i></label> <input
-								type="text" placeholder="O que você procura?">
-						</form>
-					</div>
-					<!-- .search-form -->
+				<div id="navbar" class="main-navigation">
+                        <button class="toggle-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <ul class="menu">
+                            <li class="menu-item home"><a href="index.jsp"><i
+                                        class="icon-home"></i></a></li>
+                            <li class="menu-item"><a href="products.html">Lançamentos</a></li>
+                            <li class="menu-item"><a href="products.html">Promoções</a></li>
+                            <li class="menu-item"><a href="products.html">PC</a></li>
+                            <li class="menu-item current-menu-item"><a
+                                    href="products.html">Playstation</a></li>
+                            <li class="menu-item"><a href="products.html">Xbox</a></li>
+                            <li class="menu-item"><a href="products.html">Wii</a></li>
+                        </ul>
+                        <!-- .menu -->
+                        <div class="search-form">
+                            <label><img src="image/icon-search.png"></label> <input
+                                type="text" placeholder="O que você procura?">
+                        </div>
+                        <!-- .search-form -->
 
-					<div class="mobile-navigation"></div>
-					<!-- .mobile-navigation -->
-				</div>
+                        <div class="mobile-navigation"></div>
+                        <!-- .mobile-navigation -->
+                    </div>
+				
 				<!-- .main-navigation -->
 		
 			</div>
@@ -139,8 +136,9 @@
 
 							<a href="carrinho.jsp" class="button buy">Comprar</a>
 						</div>
-
-						<img src="image/killzone.jpg" class="slide-image" width="300">
+                                            <div class="lazy-img">
+						<img data-url="image/killzone.jpg" src class="slide-image" width="300">
+                                            </div>
 					</div>
 				</li>
 				<li data-bg-image="image/needforspeed-slide.jpg">
@@ -158,8 +156,9 @@
 
 							<a href="carrinho.jsp" class="button buy">Comprar</a>
 						</div>
-
-						<img src="image/needforspeed.jpg" class="slide-image" width="300">
+                                            <div class="lazy-img">
+						<img data-url="image/needforspeed.jpg" src class="slide-image" width="300">
+                                            </div>
 					</div>
 				</li>
 				<li data-bg-image="image/callofduty-slide1.png">
@@ -177,8 +176,9 @@
 
 							<a href="carrinho.jsp" class="button buy">Comprar</a>
 						</div>
-
-						<img src="image/callofduty.jpg" class="slide-image" width="300">
+                                            <div class="lazy-img">
+						<img data-url="image/callofduty.jpg" src class="slide-image" width="300">
+                                            </div>
 					</div>
 				</li>
 			</ul>
@@ -200,9 +200,9 @@
 
 						<div class="product">
 							<div id="produto-min-height-530px" class="inner-product">
-								<div class="figure-image">
+								<div class="figure-image lazy-img">
 									<a href="Produto?id=${produto.id}"><img
-										src="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
+										data-url="BuscaImagem?id=${produto.id}" src alt="${produto.nome}"
 										height="250"></a>
 								</div>
 								<h3 class="product-title">
@@ -233,9 +233,9 @@
 
 						<div class="product">
 							<div id="produto-min-height-530px" class="inner-product">
-								<div class="figure-image">
+								<div class="figure-image lazy-img">
 									<a href="Produto?id=${produto.id}"><img
-										src="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
+										data-url="BuscaImagem?id=${produto.id}" src alt="${produto.nome}"
 										height="250"></a>
 								</div>
 								<h3 class="product-title">
@@ -382,7 +382,6 @@
 		<c:remove var="erro" scope="session" />
 		
 	</c:if>
-
 </body>
 
 </html>

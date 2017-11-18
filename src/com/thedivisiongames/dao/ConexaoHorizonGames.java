@@ -22,7 +22,7 @@ public class ConexaoHorizonGames {
 		
 		try 
 		{
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/horizon_games","root","1234");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/horizon_games","root","root");
 		} 
 		catch (SQLException e) 
 		{

@@ -25,6 +25,7 @@
 		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
 		
 		<!-- Loading main css file -->
+                <link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
 		
@@ -87,30 +88,31 @@
 
 				<!-- Fim Area de Login -->
 
-				<div class="main-navigation">
-					<button class="toggle-menu">
-						<i class="fa fa-bars"></i>
-					</button>
-					<ul class="menu">
-						<li class="menu-item home current-menu-item"><a
-							href="index.jsp"><i class="icon-home"></i></a></li>
-						<li class="menu-item"><a href="products.html">Accessories</a></li>
-						<li class="menu-item"><a href="products.html">Promotions</a></li>
-						<li class="menu-item"><a href="products.html">PC</a></li>
-						<li class="menu-item"><a href="products.html">Playstation</a></li>
-						<li class="menu-item"><a href="products.html">Xbox</a></li>
-						<li class="menu-item"><a href="products.html">Wii</a></li>
-					</ul>
-					<!-- .menu -->
-					<div class="search-form">
-						<label><img src="images/icon-search.png"></label> <input
-							type="text" placeholder="Search...">
-					</div>
-					<!-- .search-form -->
+				<div id="navbar" class="main-navigation">
+                        <button class="toggle-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <ul class="menu">
+                            <li class="menu-item home current-menu-item"><a href="index.jsp"><i
+                                        class="icon-home"></i></a></li>
+                            <li class="menu-item"><a href="products.html">Lançamentos</a></li>
+                            <li class="menu-item"><a href="products.html">Promoções</a></li>
+                            <li class="menu-item"><a href="products.html">PC</a></li>
+                            <li class="menu-item"><a
+                                    href="products.html">Playstation</a></li>
+                            <li class="menu-item"><a href="products.html">Xbox</a></li>
+                            <li class="menu-item"><a href="products.html">Wii</a></li>
+                        </ul>
+                        <!-- .menu -->
+                        <div class="search-form">
+                            <label><img src="image/icon-search.png"></label> <input
+                                type="text" placeholder="O que você procura?">
+                        </div>
+                        <!-- .search-form -->
 
-					<div class="mobile-navigation"></div>
-					<!-- .mobile-navigation -->
-				</div>
+                        <div class="mobile-navigation"></div>
+                        <!-- .mobile-navigation -->
+                    </div>
 				<!-- .main-navigation -->
 
 				<div class="breadcrumbs">
@@ -126,14 +128,14 @@
 		<div class="container">
 			<div class="page">
 
-				<table class="cart">
+				<table class="cart ">
 					<thead>
 						<tr>
 							<th class="product-name">Nome do Produto</th>
 							<th class="product-price">Preço</th>
 							<th class="product-qty">Quantidade</th>
 							<th class="product-total">Total</th>
-							<th class="action"></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -142,12 +144,12 @@
 					
 						<tr>
 							<td class="product-name">
-								<div class="product-thumbnail">
-									<img src="BuscaImagem?id=${produto.id}" alt="" height="80" width="60">
+								<div class="product-thumbnail lazy-img">
+									<img data-url="BuscaImagem?id=${produto.id}" src alt="" height="80" width="60">
 								</div>
 								<div class="product-detail">
-									<h3 class="product-title">${produto.nome}</h3>
-									<p>Vendido e entregue por: ${produto.fornecedor}</p>
+									<h3 class="product-title">${produto.nome} - ${produto.plataforma}</h3>
+                                                                        <p>Vendido e entregue por: <b>${produto.fornecedor}</b></p>
 								</div>
 							</td>
 							<td class="product-price">
@@ -163,9 +165,9 @@
 							<c:set var="total" value="${total + produto.valor}" /> 
 							
 							<td class="product-total">R$ 0,00</td>
-							<td class="action">
+							<td>
 								<!-- Botão "x" que remove o produto do carrinho -->
-								<a href="RemoveItemCarrinho?id=${produto.id}"><i class="fa fa-times"></i></a>
+								<a href="RemoveItemCarrinho?id=${produto.id}"><i class="fa fa-2x fa-times"></i></a>
 							</td>
 						</tr>
 
@@ -204,13 +206,13 @@
 				<div class="row">
 					<div class="col-md-2">
 						<div class="widget">
-							<h3 class="widget-title">Information</h3>
+							<h3 class="widget-title">Informação</h3>
 							<ul class="no-bullet">
-								<li><a href="#">Site map</a></li>
-								<li><a href="#">About us</a></li>
+								<li><a href="#">Mapa do Site</a></li>
+								<li><a href="#">Sobre nós</a></li>
 								<li><a href="#">FAQ</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href="#">Politica de Privacidade</a></li>
+								<li><a href="#">Contato</a></li>
 							</ul>
 						</div>
 						<!-- .widget -->
@@ -218,26 +220,24 @@
 					<!-- column -->
 					<div class="col-md-2">
 						<div class="widget">
-							<h3 class="widget-title">Consumer Service</h3>
+							<h3 class="widget-title">Serviços</h3>
 							<ul class="no-bullet">
-								<li><a href="#">Secure</a></li>
-								<li><a href="#">Shipping &amp; Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Orders &amp; Returns</a></li>
-								<li><a href="#">Group Sales</a></li>
+								<li><a href="#">Segurança</a></li>
+								<li><a href="#">Remessas e Retornos</a></li>
+								<li><a href="#">Remesas</a></li>
+								<li><a href="#">Retornos</a></li>
+								<li><a href="#">Vendas de Grupo</a></li>
 							</ul>
 						</div>
-						<!-- .widget -->
 					</div>
-					<!-- column -->
 					<div class="col-md-2">
 						<div class="widget">
-							<h3 class="widget-title">My Account</h3>
+							<h3 class="widget-title">Minha Conta</h3>
 							<ul class="no-bullet">
-								<li><a href="#">Login/Register</a></li>
-								<li><a href="#">Settings</a></li>
-								<li><a href="#">Cart</a></li>
-								<li><a href="#">Order Tracking</a></li>
+								<li><a href="#">Login/Cadastrar-se</a></li>
+								<li><a href="#">Configurações</a></li>
+								<li><a href="#">Carrinho de Compras</a></li>
+								<!--li><a href="#">Order Tracking</a></li-->
 								<li><a href="#">Logout</a></li>
 							</ul>
 						</div>
@@ -246,10 +246,10 @@
 					<!-- column -->
 					<div class="col-md-6">
 						<div class="widget">
-							<h3 class="widget-title">Join our newsletter</h3>
+							<h3 class="widget-title">Receba nossas novidades</h3>
 							<form action="#" class="newsletter-form">
-								<input type="text" placeholder="Enter your email..."> <input
-									type="submit" value="Subsribe">
+								<input type="email" placeholder="Coloque seu E-mail"> <input
+									type="submit" value="Inscreva-se">
 							</form>
 						</div>
 						<!-- .widget -->
@@ -258,18 +258,15 @@
 				</div>
 				<!-- .row -->
 
-				<div class="colophon">
-					<div class="copy">Copyright 2014 Company name. Designed by
-						Themezy. All rights reserved.</div>
-					<div class="social-links square">
-						<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-							class="fa fa-twitter"></i></a> <a href="#"><i
-							class="fa fa-google-plus"></i></a> <a href="#"><i
-							class="fa fa-pinterest"></i></a>
-					</div>
-					<!-- .social-links -->
-				</div>
-				<!-- .colophon -->
+				<div class="colophon col-md-12 col-sm-12 col-xs-12">
+						<div class="copy col-xs-8 col-sm-6">Desenvolvido por <u><b>The Division Games<b></u></div>
+						<div class="social-links square col-xs-4 col-sm-3 col-md-3">
+							<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+							<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+							<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+						</div> <!-- .social-links -->
+					</div> <!-- .colophon -->
 			</div>
 			<!-- .container -->
 		</div>

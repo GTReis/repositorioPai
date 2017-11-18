@@ -11,7 +11,45 @@ import java.util.List;
 import com.thedivisiongames.entidade.Produto;
 
 public class ProdutoDAO 
-{	
+{
+	public List<Produto> getTodos_produtos_division()
+	{
+		Connection con1 = ConexaoTheDivisionGames.conectaBD();
+		
+		List<Produto> lista = new ArrayList<Produto>();
+		
+		try 
+		{
+			PreparedStatement pstmt = null; 
+			pstmt = con1.prepareStatement("SELECT * FROM tb_produto prod WHERE NOT valor IS NULL AND valor <> 0 AND flg_ativo = 'S' ORDER BY data_lancamento DESC");
+
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				Produto produto = new Produto();
+					produto.setId(rs.getInt("id_produto"));
+					produto.setNome(rs.getString("nome_produto"));
+					produto.setDescricao(rs.getString("descricao_produto"));
+					produto.setGenero(rs.getString("genero_produto"));
+					produto.setValor(rs.getDouble("valor"));
+					produto.setData(rs.getDate("data_lancamento"));
+					produto.setPlataforma(rs.getString("plataforma_produto"));
+					produto.setFornecedor("The Division Games");
+				lista.add(produto);
+				
+			}
+			rs.close();
+			pstmt.close();
+			con1.close();
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
+	}
+	
 	public List<Produto> getLancamentos_division()
 	{
 		Connection con1 = ConexaoTheDivisionGames.conectaBD();
@@ -21,7 +59,7 @@ public class ProdutoDAO
 		try 
 		{
 			PreparedStatement pstmt = null; 
-			pstmt = con1.prepareStatement("SELECT * FROM tb_produto prod WHERE NOT valor IS NULL AND valor <> 0 AND flg_ativo = 'S' ORDER BY data_lancamento DESC LIMIT 0,4");
+			pstmt = con1.prepareStatement("SELECT * FROM tb_produto prod WHERE NOT valor IS NULL AND valor <> 0 AND flg_ativo = 'S' ORDER BY data_lancamento DESC");// LIMIT 0,4
 
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -59,7 +97,7 @@ public class ProdutoDAO
 		try 
 		{
 			PreparedStatement pstmt = null; 
-			pstmt = con2.prepareStatement("SELECT * FROM tb_produto prod WHERE NOT valor IS NULL AND valor <> 0 AND flg_ativo = 'S' ORDER BY data_lancamento DESC LIMIT 0,4");
+			pstmt = con2.prepareStatement("SELECT * FROM tb_produto prod WHERE NOT valor IS NULL AND valor <> 0 AND flg_ativo = 'S' ORDER BY data_lancamento DESC");// LIMIT 0,4
 
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -97,7 +135,7 @@ public class ProdutoDAO
 		try 
 		{
 			PreparedStatement pstmt = null; 
-			pstmt = con3.prepareStatement("SELECT * FROM tb_produto prod WHERE NOT valor IS NULL AND valor <> 0 AND flg_ativo = 'S' ORDER BY data_lancamento DESC LIMIT 0,4");
+			pstmt = con3.prepareStatement("SELECT * FROM tb_produto prod WHERE NOT valor IS NULL AND valor <> 0 AND flg_ativo = 'S' ORDER BY data_lancamento DESC");// LIMIT 0,4
 
 			ResultSet rs = pstmt.executeQuery();
 			

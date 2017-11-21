@@ -22,11 +22,11 @@ function bar_progress(progress_line_object, direction) {
 jQuery(document).ready(function() {
 	
     /*
-        Form
+        Fade do Formulário
     */
     $('.f1 fieldset:first').fadeIn('slow');
     
-    // next step
+    // Função para o proximo passo
     $('.f1 .btn-next').on('click', function() {
     	var parent_fieldset = $(this).parents('fieldset');
     	var next_step = true;
@@ -49,7 +49,7 @@ jQuery(document).ready(function() {
     	
     });
     
-    // previous step
+    // Função para voltar o passo
     $('.f1 .btn-previous').on('click', function() {
     	// navigation steps / progress steps
     	var current_active_step = $('.f1-step.active');

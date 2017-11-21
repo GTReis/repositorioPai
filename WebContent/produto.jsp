@@ -90,8 +90,7 @@
                             <li class="menu-item"><a href="products.html">Accessories</a></li>
                             <li class="menu-item"><a href="products.html">Promotions</a></li>
                             <li class="menu-item"><a href="products.html">PC</a></li>
-                            <li class="menu-item current-menu-item"><a
-                                    href="products.html">Playstation</a></li>
+                            <li class="menu-item current-menu-item"><a href="products.html">Playstation</a></li>
                             <li class="menu-item"><a href="products.html">Xbox</a></li>
                             <li class="menu-item"><a href="products.html">Wii</a></li>
                         </ul>
@@ -109,8 +108,9 @@
 
                     <div class="breadcrumbs">
                         <div class="container">
-                            <a href="index.jsp">Home</a> <a href="products.html">${produto.plataforma}</a>
-                            <span>${produto.nome}</span>
+                            <a href="index.jsp">Home</a>
+                            	<a href="products.html">${produto.plataforma}</a>
+                            		<span>${produto.nome}</span>
                         </div>
                     </div>
                 </div>
@@ -147,11 +147,11 @@
                                     <div class="addtocart-bar">
                                         <div class="col-md-6 col-xs-10">
                                             <p>vendido por <b>${produto.fornecedor}</b></p>
-                                            <small class="price"><small>por</small><fmt:formatNumber type="currency"
+                                            <small class="price"><fmt:formatNumber type="currency"
                                                       value="${produto.valor}" /></small>
                                         </div>
                                         <div class="col-md-5 col-xs-9">
-                                            <button class="button buy single">Comprar</button>
+                                            <a href="Carrinho?id=${produto.id}&for=${produto.fornecedor}" class="button buy single">Comprar</a>
                                         </div>
                                     </div>
                                     <div class="addtocart-bar">

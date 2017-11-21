@@ -147,7 +147,7 @@
 								</div>
 								<div class="product-detail">
 									<h3 class="product-title">${produto.nome}</h3>
-									<p>Vendido e entregue por: ${produto.fornecedor}</p>
+									<p>vendido por <b>${produto.fornecedor}</b></p>
 								</div>
 							</td>
 							<td class="product-price">

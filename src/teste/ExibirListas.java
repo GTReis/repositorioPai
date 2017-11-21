@@ -9,7 +9,7 @@ public class ExibirListas {
 
 	public static void main(String[] args) {
 		
-		//listaTodos();
+		listaTodos();
 		
 	}
 	

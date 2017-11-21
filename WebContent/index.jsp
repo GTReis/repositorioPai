@@ -88,17 +88,16 @@
 						<i class="fa fa-bars"></i>
 					</button>
 					<ul class="menu">
-						<li class="menu-item home current-menu-item"><a
-							href="index.jsp"><i class="icon-home"></i></a></li>
-						<li class="menu-item"><a href="lancamentos.jsp">Lançamentos</a></li>
-						<li class="menu-item"><a href="promocoes.jsp">Promoções</a></li>
-						<li class="menu-item"><a href="products.html">PC</a></li>
-						<li class="menu-item"><a href="products.html">PS3</a></li>
-						<li class="menu-item"><a href="products.html">PS4</a></li>
-						<li class="menu-item"><a href="products.html">XBOX 360</a></li>
-						<li class="menu-item"><a href="products.html">XBOX ONE</a></li>
-						<li class="menu-item"><a href="products.html">Wii</a></li>
-						<li class="menu-item"><a href="products.html">Switch</a></li>
+						<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
+						<li class="menu-item"><a href="categoria_lancamentos.jsp">Lançamentos</a></li>
+						<li class="menu-item"><a href="categoria_promocoes.jsp">Promoções</a></li>
+						<li class="menu-item"><a href="categoria_pc.jsp">PC</a></li>
+						<li class="menu-item"><a href="categoria_ps3.jsp">PS3</a></li>
+						<li class="menu-item"><a href="categoria_ps4.jsp">PS4</a></li>
+						<li class="menu-item"><a href="categoria_xbox360.jsp">XBOX 360</a></li>
+						<li class="menu-item"><a href="categoria_xone.jsp">XBOX ONE</a></li>
+						<li class="menu-item"><a href="categoria_wii.jsp">Wii</a></li>
+						<li class="menu-item"><a href="categoria_switch.jsp">Switch</a></li>
 					</ul>
 					<!-- .menu -->
 					<div class="search-form">
@@ -191,7 +190,7 @@
 			<div class="page">
 				<section> <header>
 				<h2 class="section-title">Lançamentos</h2>
-				<a href="#" class="all">Mostrar Todos</a> </header>
+				<a href="categoria_lancamentos.jsp" class="all">Mostrar Todos</a> </header>
 
 
 				<div class="product-list">
@@ -201,12 +200,12 @@
 						<div class="product">
 							<div id="produto-min-height-530px" class="inner-product">
 								<div class="figure-image">
-									<a href="Produto?id=${produto.id}"><img
+									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img
 										src="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
 										height="250"></a>
 								</div>
 								<h3 class="product-title">
-									<a href="#">${produto.nome}</a>
+									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}">${produto.nome}</a>
 								</h3>
 								<p>${produto.plataforma}</p>
 								<p>${produto.fornecedor}</p>
@@ -225,7 +224,7 @@
 
 				<section> <header>
 				<h2 class="section-title">Promoções</h2>
-				<a href="#" class="all">Mostrar Todos</a> </header>
+				<a href="categoria_promocoes.jsp" class="all">Mostrar Todos</a> </header>
 
 				<div class="product-list">
 
@@ -234,12 +233,12 @@
 						<div class="product">
 							<div id="produto-min-height-530px" class="inner-product">
 								<div class="figure-image">
-									<a href="Produto?id=${produto.id}"><img
+									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img
 										src="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
 										height="250"></a>
 								</div>
 								<h3 class="product-title">
-									<a href="#">${produto.nome}</a>
+									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}">${produto.nome}</a>
 								</h3>
 								<p>${produto.plataforma}</p>
 								<p>${produto.fornecedor}</p>

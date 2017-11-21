@@ -33,7 +33,7 @@
 			<div class="site-header">
 				<div class="container">
 					<div class="row">
-						<a href="index.html" id="branding">
+						<a href="index.jsp" id="branding">
 							<img src="image/logo.png" alt="" class="logo" height="50">
 						</a> <!-- #branding -->
 					</div>

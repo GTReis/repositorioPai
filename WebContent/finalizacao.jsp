@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
+
+<!-- referencia a uri das taglibs do JSTL (que devem estar dentro pasta WEB-INF/lib) e adiciona o 
+        respectivo prefixo para ser invocado-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -38,15 +46,15 @@
                             <div class="f1-progress">
                                 <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
                             </div>
-                            <div class="f1-step active">
+                            <div id="identificacao" class="f1-step active">
                                 <div class="f1-step-icon"><i class="fa fa-user"></i></div>
                                 <p>Identificação</p>
                             </div>
-                            <div class="f1-step">
+                            <div id="pagto" class="f1-step">
                                 <div class="f1-step-icon"><i class="fa fa-shopping-cart"></i></div>
                                 <p>Pagamento</p>
                             </div>
-                            <div class="f1-step">
+                            <div id="thanksmutherfucker" class="f1-step">
                                 <div class="f1-step-icon"><i class="fa fa-check"></i></div>
                                 <p>Obrigado</p>
                             </div>
@@ -58,6 +66,9 @@
                 <div class="container">
                     <div class="page">
                         <div class="f1">
+                        
+                        <c:if test="${empty sessionScope.nome}">
+                        
                             <fieldset class="col-md-4 col-sm-6 col-md-push-4 col-sm-push-3">
                                 <legend>Identificação</legend>
                                 <form action="ValidaLogin" method="POST">
@@ -69,14 +80,21 @@
                                         <label class="label-control" for="inputSenha">Senha</label>
                                         <input type="password" name="inputSenha" class="form-control" id="passInput">
                                     </div>
+                                    
+                   					<c:if test="${not empty sessionScope.erro}">
+										<p id="msg-erro"><c:out value="${sessionScope.erro}" /></p>
+									</c:if>
+                                    
                                     <div class="f1-buttons">
-                                        <button type="submit" class="btn btn-block btn-next">Entrar</button>
+                                        <button type="submit" class="btn btn-block">Entrar</button>
                                     </div>
                                 </form>
                                 <hr>
                                 <p class="text-center">Não tem cadastro? <a>Cadastre-se</a></p>
                             </fieldset>
-
+                            
+						</c:if>
+						
                             <fieldset>
                                 <p class="lead text-center">Confirmar Pedido - Minha Lista de Produtos</p>
                                 <hr>
@@ -381,6 +399,20 @@
                 });
             });
         </script>
+        
+        <c:remove var="erro" scope="session" />
+        
+       	<c:if test="${not empty sessionScope.nome}">
+	
+			<script>
+				$( "#identificacao" ).removeClass( "active" ).addClass( "activated" );
+                $( "#pagto" ).addClass( "active" );
+			</script>	
+		
+		<c:remove var="erro" scope="session" />
+		
+	</c:if>
+        
     </body>
 
 </html>

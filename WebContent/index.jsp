@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
+         pageEncoding="ISO-8859-1" %>
 
 <!-- referencia a uri das taglibs do JSTL (que devem estar dentro pasta WEB-INF/lib) e adiciona o 
-	respectivo prefixo para ser invocado-->
+        respectivo prefixo para ser invocado-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -123,26 +123,21 @@
 
 		<div class="home-slider">
 			<ul class="slides">
-				<li data-bg-image="image/killzone-slide.jpg">
+				<li data-bg-image="image/bf-1-slide.jpg">
 					<div class="container">
 						<div class="slide-content">
-							<h2 class="slide-title">Kill Zone 3</h2>
-							<small class="slide-subtitle">R$ 190,00</small>
+							<h2 id="titulo-slide" class="slide-title">Battlefield 1</h2>
+							<h2 id="preco-slide" class="slide-subtitle">R$ 149,85</h2>
 
-							<p class="texto-branco">Perspiciatis unde omnis iste natus
-								error sit voluptatem accusantium doloremque laudantium, totam
-								rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-								quasi architecto beatae vitae dicta sunt explicabo nemo enim
-								ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-								fugit, sed quia consequuntur.</p>
+							<p id="texto-slide" class="texto-branco">Battlefield 1 traz uma experiência totalmente nova para os fãs da franquia, agora te levando de volta à Primeira Guerra Mundial, um dos combates mais violentos da história. O jogo oferece um dos FPS mais dinâmicos que inclui batalhas em terra, ar e mar. São tanques, aviões, metralhadoras e artilharia pesada da época, fielmente recriando a guerra tão fatídica. Desertos escaldantes, batalhas aéreas e marinhas te esperam neste incrível título que promete renovar a franquia. </p>
 
 							<a href="carrinho.jsp" class="button buy">Comprar</a>
 						</div>
 
-						<img src="image/killzone.jpg" class="slide-image" width="300">
+						<img src="image/bf-1-xone.jpg" class="slide-image" width="300">
 					</div>
 				</li>
-				<li data-bg-image="image/needforspeed-slide.jpg">
+				<!-- li data-bg-image="image/needforspeed-slide.jpg">
 					<div class="container">
 						<div class="slide-content">
 							<h2 class="slide-title">Need for Speed: Rivals</h2>
@@ -160,8 +155,8 @@
 
 						<img src="image/needforspeed.jpg" class="slide-image" width="300">
 					</div>
-				</li>
-				<li data-bg-image="image/callofduty-slide1.png">
+				</li-->
+				<!-- li data-bg-image="image/callofduty-slide1.png">
 					<div class="container">
 						<div class="slide-content">
 							<h2 class="slide-title">Call of Duty: Ghosts</h2>
@@ -179,7 +174,7 @@
 
 						<img src="image/callofduty.jpg" class="slide-image" width="300">
 					</div>
-				</li>
+				</li-->
 			</ul>
 			<!-- .slides -->
 		</div>
@@ -188,7 +183,7 @@
 		<main class="main-content">
 		<div class="container">
 			<div class="page">
-				<section> <header>
+				<section style="margin-top: -7%; margin-bottom: -4%"> <header>
 				<h2 class="section-title">Lançamentos</h2>
 				<a href="categoria_lancamentos.jsp" class="all">Mostrar Todos</a> </header>
 
@@ -221,8 +216,8 @@
 
 				</div>
 				<!-- .product-list --> </section>
-
-				<section> <header>
+				<hr />
+				<section style="margin-top: -2%; margin-bottom: -5%"> <header>
 				<h2 class="section-title">Promoções</h2>
 				<a href="categoria_promocoes.jsp" class="all">Mostrar Todos</a> </header>
 

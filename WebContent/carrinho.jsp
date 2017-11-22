@@ -127,6 +127,13 @@
 		<div class="container">
 			<div class="page">
 
+                        <c:if test="${empty sessionScope.produto_carrinho}">
+                            <div class="alert alert-info" role="alert"><p>Seu carrinho está vazio! <a href="index.jsp" class="alert-link">Clique aqui para continuar comprando</a></p></div>		
+                        </c:if>
+
+                        <c:if test="${!empty sessionScope.produto_carrinho}">    
+                        
+                        
 				<table class="cart">
 					<thead>
 						<tr>
@@ -139,48 +146,43 @@
 					</thead>
 					<tbody>
 
-                                <c:forEach var="produto" items="${sessionScope.produto_carrinho}">
-
-                                    <tr>
-                                        <td class="product-name">
-                                            <div class="product-thumbnail lazy-img">
-                                                <img data-url="BuscaImagem?id=${produto.id}" src alt="" height="80" width="60">
-                                            </div>
-                                            <div class="product-detail">
-                                                <h3 class="product-title">${produto.nome} - ${produto.plataforma}</h3>
-                                                <p>Vendido e entregue por: <b>${produto.fornecedor}</b></p>
-                                            </div>
-                                        </td>
-                                        <td class="product-price">
-                                            <fmt:formatNumber type="currency" value="${produto.valor}" />
-                                        </td>
-                                        <td class="product-qty"><select name="#">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select></td>
-
-                                        <!-- A cada iteração, soma o valor do produto -->
-                                        <c:set var="total" value="${total + produto.valor}" /> 
-
-                                        <td class="product-total">R$ 0,00</td>
-                                        <td>
-                                            <!-- Botão "x" que remove o produto do carrinho -->
-                                            <a href="RemoveItemCarrinho?id=${produto.id}"><i class="fa fa-2x fa-times"></i></a>
-                                        </td>
-                                    </tr>
-
-                                </c:forEach>
+					<c:forEach var="produto" items="${sessionScope.produto_carrinho}">
+					
+					   <tr>
+					       <td class="product-name">
+					           <div class="product-thumbnail lazy-img">
+					               <img data-url="BuscaImagem?id=${produto.id}" src alt="" height="80" width="60">
+					           </div>
+					           <div class="product-detail">
+					               <h3 class="product-title">${produto.nome} - ${produto.plataforma}</h3>
+					               <p>Vendido e entregue por: <b>${produto.fornecedor}</b></p>
+					           </div>
+					       </td>
+					       <td class="product-price">
+					           <fmt:formatNumber type="currency" value="${produto.valor}" />
+					       </td>
+					       <td class="product-qty"><select name="#">
+					               <option value="1">1</option>
+					               <option value="2">2</option>
+					               <option value="3">3</option>
+					           </select></td>
+					
+					       <!-- A cada iteração, soma o valor do produto -->
+					       <c:set var="total" value="${total + produto.valor}" /> 
+					
+					       <td class="product-total">R$ 0,00</td>
+					       <td>
+					           <!-- Botão "x" que remove o produto do carrinho -->
+					           <a href="RemoveItemCarrinho?id=${produto.id}"><i class="fa fa-2x fa-times"></i></a>
+					       </td>
+					   </tr>
+					
+					</c:forEach>
 
 
                             </tbody>
                         </table>
                         <!-- .cart -->
-                        <c:if test="${empty sessionScope.produto_carrinho}">
-                            <div class="alert alert-info" role="alert"><p>Seu carrinho está vazio! <a href="index.jsp" class="alert-link">Clique aqui para continuar comprando</a></p></div>		
-                        </c:if>
-
-                        <c:if test="${!empty sessionScope.produto_carrinho}">    
                             <div class="cart-total">
                                 <!-- p>
                                         <strong>Subtotal:</strong> R$ 650,00
@@ -194,7 +196,7 @@
                                 </p>
                                 <p>
                                     <a href="index.jsp" class="button muted">Continuar Comprando</a> 
-                                    <a href="#" class="button">Finalizar Compra</a>
+                                    <a href="finalizacao.jsp" class="button">Finalizar Compra</a>
                                 </p>
                             </div>
                         </c:if>

@@ -60,17 +60,17 @@
                         <div class="f1">
                             <fieldset class="col-md-4 col-sm-6 col-md-push-4 col-sm-push-3">
                                 <legend>Identificação</legend>
-                                <form action="" method="POST">
+                                <form action="ValidaLogin" method="POST">
                                     <div class="form-group">
-                                        <label class="label-control" for="loginInput">E-mail:</label>
-                                        <input type="email" name="loginInput" placeholder="exemplo@exemplo.com.br" class="form-control" id="loginInput">
+                                        <label class="label-control" for="inputEmail">E-mail:</label>
+                                        <input type="email" name="inputEmail" placeholder="exemplo@exemplo.com.br" class="form-control" id="loginInput">
                                     </div>
                                     <div class="form-group">
-                                        <label class="label-control" for="passInput">Senha</label>
-                                        <input type="password" name="passInput" class="form-control" id="passInput">
+                                        <label class="label-control" for="inputSenha">Senha</label>
+                                        <input type="password" name="inputSenha" class="form-control" id="passInput">
                                     </div>
                                     <div class="f1-buttons">
-                                        <button type="button" class="btn btn-block btn-next">Entrar</button>
+                                        <button type="submit" class="btn btn-block btn-next">Entrar</button>
                                     </div>
                                 </form>
                                 <hr>

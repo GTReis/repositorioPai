@@ -98,7 +98,11 @@ public class Servlet05 extends HttpServlet {
 			con.close();
 			
 			// Redireciona para a página "index.jsp"
-			response.sendRedirect("index.jsp");
+			//response.sendRedirect("index.jsp");
+			
+			String pagina_solicitante = null;
+			pagina_solicitante = request.getHeader("Referer");
+			response.sendRedirect(pagina_solicitante);
 		}
 		// Trata os erros que podem acontecer durante o processamento
 		catch (NumberFormatException | SQLException | NoSuchAlgorithmException e) 

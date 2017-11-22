@@ -26,6 +26,12 @@ jQuery(document).ready(function() {
     */
     $('.f1 fieldset:first').fadeIn('slow');
     
+    $('input').blur(function(){
+        if($(this).val() == ''){
+            $(this).css({"border" : "1px solid #F00", "padding": "2px"});
+        }
+    });
+    
     // Função para o proximo passo
     $('.f1 .btn-next').on('click', function() {
     	var parent_fieldset = $(this).parents('fieldset');

@@ -60,7 +60,7 @@
                         <div class="f1">
                             <fieldset class="col-md-4 col-sm-6 col-md-push-4 col-sm-push-3">
                                 <legend>Identificação</legend>
-                                <form action="" method="POST">
+                                <form id="idenficacao" action="" method="POST">
                                     <div class="form-group">
                                         <label class="label-control" for="loginInput">E-mail:</label>
                                         <input type="email" name="loginInput" placeholder="exemplo@exemplo.com.br" class="form-control" id="loginInput">
@@ -120,7 +120,7 @@
                                             <a href="#boleto" aria-controls="boleto" role="tab" data-toggle="tab"><span class="fa fa-barcode"></span> Boleto</a>
                                         </li>
                                         <li role="presentation">
-                                            <a href="#debito" aria-controls="debito" role="tab" data-toggle="tab"><span class="fa fa-credit-card"></span> Cartão de Débito</a>
+                                            <a href="#debito" aria-controls="debito" role="tab" data-toggle="tab"><span class="fa fa-credit-card"></span> Débito</a>
                                         </li>
                                     </ul>
 
@@ -152,11 +152,33 @@
                                                                 <div class="col-md-6 col-xs-6">
                                                                     <select class="form-control">
                                                                         <option>Mês</option>
+                                                                        <option>01</option>
+                                                                        <option>02</option>
+                                                                        <option>03</option>
+                                                                        <option>04</option>
+                                                                        <option>05</option>
+                                                                        <option>06</option>
+                                                                        <option>07</option>
+                                                                        <option>08</option>
+                                                                        <option>09</option>
+                                                                        <option>10</option>
+                                                                        <option>11</option>
+                                                                        <option>12</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">
                                                                     <select class="form-control">
                                                                         <option>Ano</option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                        <option></option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -187,7 +209,7 @@
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-md-5 col-sm-6 col-md-push-4 col-sm-push-3">
-                                                        <button type="button" class="btn btn-block btn-success">Pagar com cartão de crédito</button>
+                                                        <button type="button" class="btn btn-block btn-success btn-next">Pagar com cartão de crédito</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -201,7 +223,7 @@
                                                 </ul>
                                                 <br>
                                                 <div class="col-md-5 col-sm-5 col-sm-offset-3 col-md-offset-3">
-                                                    <button type="button" class="btn btn-block btn-success">Pagar com Boleto</button>
+                                                    <button type="button" class="btn btn-block btn-success btn-next">Pagar com Boleto</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -252,7 +274,7 @@
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-5 col-sm-5 col-sm-offset-3 col-md-offset-3">
-                                                            <button type="button" class="btn btn-block btn-success">Pagar com Débito Online</button>
+                                                            <button type="button" class="btn btn-block btn-success btn-next">Pagar com Débito Online</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -261,10 +283,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" id="pagamento">
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-next">Próximo</button>
-                                </div>
-                            </fieldset>
+                                </fieldset>
 
                             <fieldset>
                                 <legend>Resumo da sua compra</legend>

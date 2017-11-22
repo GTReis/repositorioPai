@@ -38,7 +38,7 @@ public class Servlet06 extends HttpServlet {
 		sessao.removeAttribute("erro");
 		
 		// Invalida a sessão
-		sessao.invalidate();
+		//sessao.invalidate();
 		
 		// Redireciona para a página index.jsp
 		response.sendRedirect("index.jsp");

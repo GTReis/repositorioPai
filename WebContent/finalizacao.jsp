@@ -109,12 +109,14 @@
                                     </thead>
                                     <tbody>
                                         <!-- Inicio do Foreach do Carrinho -->
+                                        <c:forEach var="produto" items="${sessionScope.produto_carrinho}">
                                         <tr>
-                                            <td>Need for Speed: Rivals - PS4</td>
-                                            <td>R$ 120,00</td>
+                                            <td>${produto.nome} - ${produto.plataforma}</td>
+                                            <td><fmt:formatNumber type="currency" value="${produto.valor}" /></td>
                                             <td>1</td>
-                                            <td>R$ 120,00</td>
+                                            <td>R$ 15.000,00</td>
                                         </tr>
+                                        </c:forEach>
                                         <!-- Fim do Foreach -->
                                         <!-- Linha da tabela fixa para o total do carrinho -->
                                         <tr>

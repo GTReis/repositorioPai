@@ -206,7 +206,7 @@
                                                         height="250"></a>
                                             </div>
                                             <h3 class="product-title">
-                                                <a href="Produto?id=${produto.id}">${produto.nome}</a>
+                                                <a href="#">${produto.nome}</a>
                                             </h3>
                                             <p>${produto.plataforma}</p>
                                             <p>${produto.fornecedor}</p>
@@ -239,7 +239,7 @@
                                                         height="250"></a>
                                             </div>
                                             <h3 class="product-title">
-                                                <a href="Produto?id=${produto.id}">${produto.nome}</a>
+                                                <a href="#">${produto.nome}</a>
                                             </h3>
                                             <p>${produto.plataforma}</p>
                                             <p>${produto.fornecedor}</p>

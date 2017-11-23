@@ -33,7 +33,7 @@
                         <script src="js/ie-support/html5.js"></script>
                         <script src="js/ie-support/respond.js"></script>
                         <![endif]-->
-
+	
     </head>
 
 
@@ -146,7 +146,7 @@
 					</thead>
 					<tbody>
 
-					<c:forEach var="produto" items="${sessionScope.produto_carrinho}">
+					<c:forEach var="produto" items="${sessionScope.produto_carrinho}" varStatus="contador">
 					
 					   <tr>
 					       <td class="product-name">
@@ -161,16 +161,24 @@
 					       <td class="product-price">
 					           <fmt:formatNumber type="currency" value="${produto.valor}" />
 					       </td>
-					       <td class="product-qty"><select name="#">
-					               <option value="1">1</option>
-					               <option value="2">2</option>
-					               <option value="3">3</option>
-					           </select></td>
+					       
+					       <div id="valor-produto<c:out value="${contador.count}" />" style="display: none">${produto.valor}</div>
+					       
+					       <td class="product-qty">
+								<select id="selectQtd<c:out value="${contador.count}" />" onchange="calculaSubtotal(<c:out value="${contador.count}" />)">
+								    <option value="1">1</option>
+								    <option value="2">2</option>
+								    <option value="3">3</option>
+								    <option value="4">4</option>
+								    <option value="5">5</option>
+								</select>
+							</td>
 					
 					       <!-- A cada iteração, soma o valor do produto -->
 					       <c:set var="total" value="${total + produto.valor}" /> 
 					
-					       <td class="product-total">R$ 0,00</td>
+					       <td id="total-item<c:out value="${contador.count}" />" class="product-total"><fmt:formatNumber type="currency" value="${produto.valor}" /></td>
+					       
 					       <td>
 					           <!-- Botão "x" que remove o produto do carrinho -->
 					           <a href="RemoveItemCarrinho?id=${produto.id}"><i class="fa fa-2x fa-times"></i></a>
@@ -189,7 +197,7 @@
                                 </p-->
                                 <p class="total">
                                     <strong>Total</strong>
-                                    <span class="num">
+                                    <span id="total-carrinho" class="num">
                                         <!-- Exibe o total calculado na iteração do foreach do carrinho -->
                                         <fmt:formatNumber type="currency" value="${total}" />
                                     </span>
@@ -415,7 +423,51 @@
                                             <c:remove var="erro" scope="session" />
 
                                         </c:if>
+			
+				<script>
+					function calculaSubtotal(contador)
+					{
+						var option = document.getElementById("selectQtd"+contador);
+						var qtd = option.options[option.selectedIndex].value;
+						
+						var valor_prod = document.getElementById("valor-produto"+contador).innerHTML;
+						var valor_total = valor_prod * qtd;
+	
+						//Formata com R$
+						//var f = valor_total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+						
+						//Formata sem R$
+						var valor_total_formatado = valor_total.toLocaleString('pt-br', {minimumFractionDigits: 2});
+						
+						document.getElementById("total-item"+contador).innerHTML = "R$ "+valor_total_formatado;
+						
+						calculaTotal();
+					}
+					
+					function calculaTotal()
+					{
+						var tamanho_lista = "<c:out value='${sessionScope.produto_carrinho.size()}' />";
+						
+						var preco_final = 0;
+						
+						for(i=1; i<=tamanho_lista; i++)
+						{
+							var option = document.getElementById("selectQtd"+i);
+							var qtd = option.options[option.selectedIndex].value;
+							
+							var valor_prod = document.getElementById("valor-produto"+i).innerHTML;
+							var valor_total = valor_prod * qtd;
+							
+							preco_final += valor_total;
+						}
+						
+						//Formata sem R$
+						var valor_total_formatado = preco_final.toLocaleString('pt-br', {minimumFractionDigits: 2});
+						
+						document.getElementById("total-carrinho").innerHTML = "R$ "+valor_total_formatado;
+					}
+				</script>                    
 
-                                        </body>
+	</body>
 
-                                        </html>
+</html>

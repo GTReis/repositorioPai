@@ -39,7 +39,7 @@ public class Servlet07 extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// Captura o id do produto que foi paramatrizada na URL
+		// Captura o id do produto que foi paramatrizado na URL
 		String id_produto = request.getParameter("id");
 		String fornecedor = request.getParameter("for");
 		
@@ -48,19 +48,32 @@ public class Servlet07 extends HttpServlet {
 		
 		try 
 		{
+			//Cria uma nova lista
 			List<Produto> lista;
 			
 			// Recupera a sessão e armazena em uma variável
 			HttpSession sessao = request.getSession();
+			
+			// Recupera a lista da sessão (mesmo se estiver vazia não tem problema, é só para não sobrescrever
+			// os itens caso já esteja com algum objeto nela)
 			lista = (List<Produto>) sessao.getAttribute("produto_carrinho");
 			
+			// Inicia prepared statement
 			PreparedStatement pstmt = null;
+			
+			// Armazena a query no PreparedStatement
 			pstmt = con.prepareStatement("SELECT * FROM tb_produto WHERE id_produto = ?");
+			
+			// Inclui no ponto de interrogação da query o id recuperado do request
 			pstmt.setLong(1, Long.valueOf(id_produto));
+			
+			// Executa a query e armazena em um ResultSet
 			ResultSet rs = pstmt.executeQuery();
-
+			
+			// Se tiver pelo menos 1 resultado...
 			if(rs.next())
 			{
+				// Instancia um novo produto e preenche seus atributos com os dados coletados do banco de dados
 				Produto produto = new Produto();
 					produto.setId(rs.getInt("id_produto"));
 					produto.setNome(rs.getString("nome_produto"));
@@ -79,16 +92,15 @@ public class Servlet07 extends HttpServlet {
 						// Adiciona o objeto produto na lista
 						lista.add(produto);
 					}
+					// Se já tiver um objeto na lista, só incrementa
 					else
 					{
 						// Adiciona o objeto produto na lista
 						lista.add(produto);
 					}
 					
-					// Armazena o tamanho da lista
+					// Recupera o tamanho da lista
 					int num_itens_carrinho = lista.size();					
-					
-					//System.out.println(num_itens_carrinho);
 					
 					// Adiciona o número de itens do carrinho na variavel de sessao
 					sessao.setAttribute("num_itens_carrinho", num_itens_carrinho);
@@ -96,12 +108,6 @@ public class Servlet07 extends HttpServlet {
 					// Adiciona a lista completa na variavel de sessao
 					sessao.setAttribute("produto_carrinho", lista);
 			}
-			pstmt.close();
-			rs.close();
-			con.close();
-			
-			// Cria a variável de sessão "erro" e insere "Usuário ou senha incorretos"
-			//sessao.setAttribute("erro", "Usuário ou senha incorretos");
 			
 			// Encerra o PreparedStatement
 			pstmt.close();
@@ -115,7 +121,7 @@ public class Servlet07 extends HttpServlet {
 			// Redireciona para a página "carrinho.jsp"
 			response.sendRedirect("carrinho.jsp");
 		}
-		// Trata os erros que podem acontecer durante o processamento
+		// Trata os erros que podem ocorrer durante o processamento
 		catch (NumberFormatException | SQLException e) 
 		{
 			e.printStackTrace();

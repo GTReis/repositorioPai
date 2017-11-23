@@ -100,8 +100,13 @@ public class Servlet05 extends HttpServlet {
 			// Redireciona para a página "index.jsp"
 			//response.sendRedirect("index.jsp");
 			
+			// Zera a variavel da pagina solicitante
 			String pagina_solicitante = null;
+			
+			// Recupera parte da url da página solicitante e armazena na variavel 
 			pagina_solicitante = request.getHeader("Referer");
+			
+			// Redireciona de volta para a página solicitante
 			response.sendRedirect(pagina_solicitante);
 		}
 		// Trata os erros que podem acontecer durante o processamento

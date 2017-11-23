@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.thedivisiongames.dao.ConexaoHorizonGames;
+import com.thedivisiongames.dao.ConexaoJunkGames;
 import com.thedivisiongames.dao.ConexaoTheDivisionGames;
 import com.thedivisiongames.dao.ImagemDAO;
 import com.thedivisiongames.entidade.Imagem;
@@ -133,7 +134,7 @@ public class Servlet02 extends HttpServlet {
 		{
 			try 
 			{
-				Connection con = ConexaoHorizonGames.conectaBD();
+				Connection con = ConexaoJunkGames.conectaBD();
 				
 				PreparedStatement stmt = con.prepareStatement("SELECT * FROM tb_produto WHERE cod_prod_division_games = ?");
 				

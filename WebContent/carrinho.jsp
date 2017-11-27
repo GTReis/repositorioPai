@@ -92,16 +92,9 @@
 					<button class="toggle-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<ul class="menu">
-						<li class="menu-item home current-menu-item"><a
-							href="index.jsp"><i class="icon-home"></i></a></li>
-						<li class="menu-item"><a href="products.html">Accessories</a></li>
-						<li class="menu-item"><a href="products.html">Promotions</a></li>
-						<li class="menu-item"><a href="products.html">PC</a></li>
-						<li class="menu-item"><a href="products.html">Playstation</a></li>
-						<li class="menu-item"><a href="products.html">Xbox</a></li>
-						<li class="menu-item"><a href="products.html">Wii</a></li>
-					</ul>
+						
+						<c:import url="includes/menu-navbar.jsp" />
+						
 					<!-- .menu -->
 					<div class="search-form">
 						<label><img src="images/icon-search.png"></label> <input
@@ -127,12 +120,11 @@
 		<div class="container">
 			<div class="page">
 
-                        <c:if test="${empty sessionScope.produto_carrinho}">
-                            <div class="alert alert-info" role="alert"><p>Seu carrinho está vazio! <a href="index.jsp" class="alert-link">Clique aqui para continuar comprando</a></p></div>		
-                        </c:if>
-
-                        <c:if test="${!empty sessionScope.produto_carrinho}">    
-                        
+			<c:if test="${empty sessionScope.produto_carrinho}">
+			    <div class="alert alert-info" role="alert"><p>Seu carrinho está vazio! <a href="index.jsp" class="alert-link">Clique aqui para continuar comprando</a></p></div>		
+			</c:if>
+			
+ 			<c:if test="${!empty sessionScope.produto_carrinho}">    
                         
 				<table class="cart">
 					<thead>
@@ -145,66 +137,84 @@
 						</tr>
 					</thead>
 					<tbody>
+					
+					<c:remove var="total" scope="session" />
+					<!-- c:set var="total" value="${total + produto.valor}" /-->
+					
+					<form action="Finalizacao" method="POST">
 
-					<c:forEach var="produto" items="${sessionScope.produto_carrinho}" varStatus="contador">
-					
-					   <tr>
-					       <td class="product-name">
-					           <div class="product-thumbnail lazy-img">
-					               <img data-url="BuscaImagem?id=${produto.id}" src alt="" height="80" width="60">
-					           </div>
-					           <div class="product-detail">
-					               <h3 class="product-title">${produto.nome} - ${produto.plataforma}</h3>
-					               <p>Vendido e entregue por: <b>${produto.fornecedor}</b></p>
-					           </div>
-					       </td>
-					       <td class="product-price">
-					           <fmt:formatNumber type="currency" value="${produto.valor}" />
-					       </td>
-					       
-					       <div id="valor-produto<c:out value="${contador.count}" />" style="display: none">${produto.valor}</div>
-					       
-					       <td class="product-qty">
-								<select id="selectQtd<c:out value="${contador.count}" />" onchange="calculaSubtotal(<c:out value="${contador.count}" />)">
-								    <option value="1">1</option>
-								    <option value="2">2</option>
-								    <option value="3">3</option>
-								    <option value="4">4</option>
-								    <option value="5">5</option>
-								</select>
-							</td>
-					
-					       <!-- A cada iteração, soma o valor do produto -->
-					       <c:set var="total" value="${total + produto.valor}" /> 
-					
-					       <td id="total-item<c:out value="${contador.count}" />" class="product-total"><fmt:formatNumber type="currency" value="${produto.valor}" /></td>
-					       
-					       <td>
-					           <!-- Botão "x" que remove o produto do carrinho -->
-					           <a href="RemoveItemCarrinho?id=${produto.id}"><i class="fa fa-2x fa-times"></i></a>
-					       </td>
-					   </tr>
-					
-					</c:forEach>
+						<c:forEach var="produto" items="${sessionScope.produto_carrinho}" varStatus="contador">
+						
+						   <tr>
+						       <td class="product-name">
+						           <div class="product-thumbnail lazy-img">
+						               <img data-url="BuscaImagem?id=${produto.id}" src alt="" height="80" width="60">
+						           </div>
+						           <div class="product-detail">
+						               <h3 class="product-title">${produto.nome} - ${produto.plataforma}</h3>
+						               <p>Vendido e entregue por: <b>${produto.fornecedor}</b></p>
+						           </div>
+						       </td>
+						       <td class="product-price">
+						           <fmt:formatNumber type="currency" value="${produto.valor}" />
+						       </td>
+						       
+						       <div id="valor-produto<c:out value='${contador.count}' />" class="hide">${produto.valor}</div>
+						       
+						       <td class="product-qty">
+									<select id="selectQtd<c:out value="${contador.count}" />" onchange="calculaSubtotal(<c:out value="${contador.count}" />)">
+									    <option value="1">1</option>
+									    <option value="2">2</option>
+									    <option value="3">3</option>
+									    <option value="4">4</option>
+									    <option value="5">5</option>
+									</select>
+								</td>
+						
+						       <!-- A cada iteração, soma o valor do produto -->
+						       <c:set var="total" value="${total + produto.valor}" />
+						
+						       <td id="total-item<c:out value="${contador.count}" />" class="product-total"><fmt:formatNumber type="currency" value="${produto.valor}" /></td>
+						       
+						       <td>
+						           <!-- Botão "x" que remove o produto do carrinho -->
+						           <a href="RemoveItemCarrinho?id=${produto.id}"><i class="fa fa-2x fa-times"></i></a>
+						       </td>
+						   </tr>
+						   
+						   <!-- Inicia formulário oculto que envia informações para o servlet -->
+						   <input type="hidden" name="id<c:out value="${contador.count}" />" value="${produto.id}" />
+						   <input type="hidden" name="nome<c:out value="${contador.count}" />" value="${produto.nome}" />
+						   <input type="hidden" name="genero<c:out value="${contador.count}" />" value="${produto.genero}" />
+						   <input type="hidden" name="plataforma<c:out value="${contador.count}" />" value="${produto.plataforma}" />
+						   <input type="hidden" name="fornecedor<c:out value="${contador.count}" />" value="${produto.fornecedor}" />
+						   <input type="hidden" name="valor<c:out value="${contador.count}" />" value="${produto.valor}" />
+						   <input type="hidden" name="qtd<c:out value="${contador.count}" />" value="1" id="qtdProduto<c:out value="${contador.count}" />" />
+						   <input type="hidden" name="subtotal<c:out value="${contador.count}" />" value="${produto.valor}" id="subTotal<c:out value="${contador.count}" />" />
+							
+						</c:forEach>
+						
+						<input type="text" name="tamanho_lista" value="${sessionScope.num_itens_carrinho}" hidden />
+						<input type="hidden" name="total" id="Total" value="${total}" />
+						
+						<input id="BotaoSubmitCarrinho" type="submit" hidden />
 
+					</form>
 
-                            </tbody>
+					</tbody>
                         </table>
                         <!-- .cart -->
                             <div class="cart-total">
-                                <!-- p>
-                                        <strong>Subtotal:</strong> R$ 650,00
-                                </p-->
                                 <p class="total">
                                     <strong>Total</strong>
                                     <span id="total-carrinho" class="num">
-                                        <!-- Exibe o total calculado na iteração do foreach do carrinho -->
+                                        <!-- Inicialmente exibe o total calculado na iteração do foreach do carrinho, mas pode ser alterado por javascript quando alterado a quantidade -->
                                         <fmt:formatNumber type="currency" value="${total}" />
                                     </span>
                                 </p>
                                 <p>
                                     <a href="index.jsp" class="button muted">Continuar Comprando</a> 
-                                    <a href="finalizacao.jsp" class="button">Finalizar Compra</a>
+                                    <a onclick="encaminhaServlet()" href="#" class="button">Finalizar Compra</a>
                                 </p>
                             </div>
                         </c:if>
@@ -441,12 +451,16 @@
 						
 						document.getElementById("total-item"+contador).innerHTML = "R$ "+valor_total_formatado;
 						
+						document.getElementById("qtdProduto"+contador).value = qtd;
+						document.getElementById("subTotal"+contador).value = valor_total;
+						
 						calculaTotal();
 					}
 					
 					function calculaTotal()
 					{
-						var tamanho_lista = "<c:out value='${sessionScope.produto_carrinho.size()}' />";
+						var tamanho_lista = 0;
+						tamanho_lista = "<c:out value='${sessionScope.produto_carrinho.size()}' />";
 						
 						var preco_final = 0;
 						
@@ -465,6 +479,12 @@
 						var valor_total_formatado = preco_final.toLocaleString('pt-br', {minimumFractionDigits: 2});
 						
 						document.getElementById("total-carrinho").innerHTML = "R$ "+valor_total_formatado;
+						
+						document.getElementById("Total").value = preco_final;
+					}
+					function encaminhaServlet()
+					{
+						document.getElementById("BotaoSubmitCarrinho").click();
 					}
 				</script>                    
 

@@ -98,20 +98,9 @@
 						<button class="toggle-menu">
 							<i class="fa fa-bars"></i>
 						</button>
-						<ul class="menu">
-							<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-							<li class="menu-item"><a href="categoria_lancamentos.jsp">Lançamentos</a></li>
-							<li class="menu-item current-menu-item"><a href="categoria_promocoes.jsp">Promoções</a></li>
-							<li class="menu-item"><a href="categoria_pc.jsp">PC</a></li>
-							<li class="menu-item"><a href="categoria_ps3.jsp">PS3</a></li>
-							<li class="menu-item"><a href="categoria_ps4.jsp">PS4</a></li>
-							<li class="menu-item"><a href="categoria_xbox360.jsp">XBOX 360</a></li>
-							<li class="menu-item"><a href="categoria_xone.jsp">XBOX ONE</a></li>
-							<li class="menu-item"><a href="categoria_wii.jsp">Wii</a></li>
-							<li class="menu-item"><a href="categoria_switch.jsp">Switch</a></li>
-
-
-						</ul>
+						
+							<c:import url="includes/menu-navbar.jsp"></c:import>
+						
 						<!-- .menu -->
 						<div class="search-form">
 							<form action="">
@@ -202,9 +191,9 @@
 
 								<div class="product">
 									<div id="produto-min-height-530px" class="inner-product">
-										<div class="figure-image">
-											<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img
-												src="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
+										<div class="figure-image lazy-img">
+											<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img src
+												data-url="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
 												height="250" width="200"></a>
 										</div>
 										<h3 class="product-title">

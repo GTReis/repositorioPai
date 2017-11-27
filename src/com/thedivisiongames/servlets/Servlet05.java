@@ -59,7 +59,7 @@ public class Servlet05 extends HttpServlet {
 			PreparedStatement pstmt = null;
 			
 			// Armazena na variável do PreparedStatement uma string da query do banco de dados
-			pstmt = con.prepareStatement("SELECT nome_cli, senha_cli FROM tb_cliente WHERE email_cli = ? ");
+			pstmt = con.prepareStatement("SELECT id_cli, nome_cli, senha_cli FROM tb_cliente WHERE email_cli = ? ");
 			
 			// Insere no primeiro "?" a variável que armazenou o email digitado pelo usuário no form
 			pstmt.setString(1, email);
@@ -74,6 +74,7 @@ public class Servlet05 extends HttpServlet {
 				if( MessageDigest.isEqual( senha_digitada, rs.getBytes("senha_cli") ) )
 				{
 					// Cria a variável de sessão "nome" e insere o nome do cliente que veio do banco de dados
+					sessao.setAttribute("id", rs.getString("id_cli"));
 					sessao.setAttribute("nome", rs.getString("nome_cli"));
 				}
 				else
@@ -106,8 +107,20 @@ public class Servlet05 extends HttpServlet {
 			// Recupera parte da url da página solicitante e armazena na variavel 
 			pagina_solicitante = request.getHeader("Referer");
 			
-			// Redireciona de volta para a página solicitante
-			response.sendRedirect(pagina_solicitante);
+			//System.out.println(pagina_solicitante);
+			
+			if(pagina_solicitante.equals("http://localhost:8080/The_Division_Games/Finalizacao"))
+			{
+				// Redireciona de volta para a página solicitante
+				response.sendRedirect("finalizacao.jsp");
+			}
+			else
+			{
+				// Redireciona de volta para a página solicitante
+				response.sendRedirect(pagina_solicitante);
+			}
+			
+			
 		}
 		// Trata os erros que podem acontecer durante o processamento
 		catch (NumberFormatException | SQLException | NoSuchAlgorithmException e) 

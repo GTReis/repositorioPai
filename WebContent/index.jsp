@@ -87,18 +87,11 @@
 					<button class="toggle-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<ul class="menu">
-						<li class="menu-item home current-menu-item"><a href="index.jsp"><i class="icon-home"></i></a></li>
-						<li class="menu-item"><a href="categoria_lancamentos.jsp">Lançamentos</a></li>
-						<li class="menu-item"><a href="categoria_promocoes.jsp">Promoções</a></li>
-						<li class="menu-item"><a href="categoria_pc.jsp">PC</a></li>
-						<li class="menu-item"><a href="categoria_ps3.jsp">PS3</a></li>
-						<li class="menu-item"><a href="categoria_ps4.jsp">PS4</a></li>
-						<li class="menu-item"><a href="categoria_xbox360.jsp">XBOX 360</a></li>
-						<li class="menu-item"><a href="categoria_xone.jsp">XBOX ONE</a></li>
-						<li class="menu-item"><a href="categoria_wii.jsp">Wii</a></li>
-						<li class="menu-item"><a href="categoria_switch.jsp">Switch</a></li>
-					</ul>
+					
+					<!-- Menu navbar -->
+					
+						<c:import url="includes/menu-navbar.jsp" />
+					
 					<!-- .menu -->
 					<div class="search-form">
 						<form action="">
@@ -137,11 +130,11 @@
 						<img src="image/bf-1-xone.jpg" class="slide-image" width="300">
 					</div>
 				</li>
-				<!-- li data-bg-image="image/needforspeed-slide.jpg">
+				<li data-bg-image="image/needforspeed-slide.jpg">
 					<div class="container">
 						<div class="slide-content">
 							<h2 class="slide-title">Need for Speed: Rivals</h2>
-							<small class="slide-subtitle">R$ 190,00</small>
+							<h2 id="preco-slide"  class="slide-subtitle">R$ 190,00</h2>
 
 							<p class="texto-branco">Perspiciatis unde omnis iste natus
 								error sit voluptatem accusantium doloremque laudantium, totam
@@ -155,12 +148,12 @@
 
 						<img src="image/needforspeed.jpg" class="slide-image" width="300">
 					</div>
-				</li-->
-				<!-- li data-bg-image="image/callofduty-slide1.png">
+				</li>
+				<li data-bg-image="image/callofduty-slide1.png">
 					<div class="container">
 						<div class="slide-content">
 							<h2 class="slide-title">Call of Duty: Ghosts</h2>
-							<small class="slide-subtitle">R$ 190,00</small>
+							<h2 id="preco-slide"  class="slide-subtitle">R$ 190,00</h2>
 
 							<p class="texto-branco">Perspiciatis unde omnis iste natus
 								error sit voluptatem accusantium doloremque laudantium, totam
@@ -174,7 +167,7 @@
 
 						<img src="image/callofduty.jpg" class="slide-image" width="300">
 					</div>
-				</li-->
+				</li>
 			</ul>
 			<!-- .slides -->
 		</div>
@@ -194,9 +187,9 @@
 
 						<div class="product">
 							<div id="produto-min-height-530px" class="inner-product">
-								<div class="figure-image">
-									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img
-										src="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
+								<div class="figure-image lazy-img">
+									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img src
+										data-url="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
 										height="250"></a>
 								</div>
 								<h3 class="product-title">
@@ -227,9 +220,9 @@
 
 						<div class="product">
 							<div id="produto-min-height-530px" class="inner-product">
-								<div class="figure-image">
-									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img
-										src="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
+								<div class="figure-image lazy-img">
+									<a href="Produto?id=${produto.id}&for=${produto.fornecedor}"><img src
+										data-url="BuscaImagem?id=${produto.id}" alt="${produto.nome}"
 										height="250"></a>
 								</div>
 								<h3 class="product-title">

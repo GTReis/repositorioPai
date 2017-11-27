@@ -133,7 +133,7 @@ public class Servlet07 extends HttpServlet {
 		{
 			try 
 			{
-				// Conecta com o banco de dados através do método "conectaBD" da classe "ConexaoTheDivisionGames"
+				// Conecta com o banco de dados através do método "conectaBD" da classe "ConexaoHorizonGames"
 				Connection con = ConexaoHorizonGames.conectaBD();
 				
 				// Inicia prepared statement
@@ -207,14 +207,14 @@ public class Servlet07 extends HttpServlet {
 		{
 			try 
 			{
-				// Conecta com o banco de dados através do método "conectaBD" da classe "ConexaoTheDivisionGames"
+				// Conecta com o banco de dados através do método "conectaBD" da classe "ConexaoJunkGames"
 				Connection con = ConexaoJunkGames.conectaBD();
 				
 				// Inicia prepared statement
 				PreparedStatement pstmt = null;
 				
 				// Armazena a query no PreparedStatement
-				pstmt = con.prepareStatement("SELECT * FROM tb_produto WHERE id_produto = ?");
+				pstmt = con.prepareStatement("SELECT * FROM tb_produto WHERE cod_prod_division_games = ?");
 				
 				// Inclui no ponto de interrogação da query o id recuperado do request
 				pstmt.setLong(1, Long.valueOf(id_produto));
@@ -227,7 +227,7 @@ public class Servlet07 extends HttpServlet {
 				{
 					// Instancia um novo produto e preenche seus atributos com os dados coletados do banco de dados
 					Produto produto = new Produto();
-						produto.setId(rs.getInt("id_produto"));
+						produto.setId(rs.getInt("cod_prod_division_games"));
 						produto.setNome(rs.getString("nome_produto"));
 						produto.setDescricao(rs.getString("descricao_produto"));
 						produto.setGenero(rs.getString("genero_produto"));

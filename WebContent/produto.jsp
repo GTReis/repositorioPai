@@ -84,16 +84,9 @@
                         <button class="toggle-menu">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <ul class="menu">
-                            <li class="menu-item home current-menu-item"><a href="index.jsp"><i
-                                        class="icon-home"></i></a></li>
-                            <li class="menu-item"><a href="products.html">Lançamentos</a></li>
-                            <li class="menu-item"><a href="products.html">Promoções</a></li>
-                            <li class="menu-item"><a href="products.html">PC</a></li>
-                            <li class="menu-item current-menu-item"><a href="products.html">Playstation</a></li>
-                            <li class="menu-item"><a href="products.html">Xbox</a></li>
-                            <li class="menu-item"><a href="products.html">Wii</a></li>
-                        </ul>
+						
+							<c:import url="includes/menu-navbar.jsp"></c:import>
+						
                         <!-- .menu -->
                         <div class="search-form">
                             <label><img src="image/icon-search.png"></label> <input

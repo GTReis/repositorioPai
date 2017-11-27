@@ -36,6 +36,7 @@
     <body>
 
         <div id="site-content">
+        
             <div class="site-header">
                 <div class="container">
                     <a href="index.jsp" id="branding">
@@ -102,28 +103,39 @@
                                     <thead>
                                         <tr>
                                             <th>Nome do Produto</th>
+                                            <th>Gênero</th>
+                                            <!--th>Plataforma</th>
+                                            <th>Vendido e entregue por</th-->
                                             <th>Preço</th>
                                             <th>Qtde</th>
                                             <th>Sub-Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    
                                         <!-- Inicio do Foreach do Carrinho -->
-                                        <c:forEach var="produto" items="${sessionScope.produto_carrinho}">
-                                        <tr>
-                                            <td>${produto.nome} - ${produto.plataforma}</td>
-                                            <td><fmt:formatNumber type="currency" value="${produto.valor}" /></td>
-                                            <td>1</td>
-                                            <td>R$ 15.000,00</td>
-                                        </tr>
+                                        <c:forEach var="produto" items="${sessionScope.carrinho}">
+	                                        <tr>
+	                                            <td>${produto.nome}</td>
+	                                            <td>${produto.genero}</td>
+	                                            <td>${produto.plataforma}</td>
+	                                            <td>${produto.fornecedor}</td>
+	                                            <td><fmt:formatNumber type="currency" value="${produto.preco}" /></td>
+	                                            <td>${produto.qtd}</td>
+	                                            <td><fmt:formatNumber type="currency" value="${produto.subtotal}" /></td>
+	                                        </tr>
                                         </c:forEach>
+                                        
                                         <!-- Fim do Foreach -->
                                         <!-- Linha da tabela fixa para o total do carrinho -->
                                         <tr>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                             <td><b>Total:</b></td>
-                                            <th><b>R$ 120,00</b></th>
+                                            <th><b><fmt:formatNumber type="currency" value="${total}" /></b></th>
                                         </tr>
                                         <!-- Fim da Linha do Total -->
                                     </tbody>
@@ -287,45 +299,58 @@
                             </fieldset>
 
                             <fieldset>
-                                <legend>Resumo da sua compra</legend>
+                                <legend>Obrigado por escolher a The Division Games! Aqui está o resumo da sua compra</legend>
                                 <div class="panel panel-default">
                                     <div class="panel-body">
+                                    
+                                    <c:forEach var="produto" items="${sessionScope.carrinho}" varStatus="contador">
+                                    
                                         <div class="row">
                                             <div class="col-md-1 col-sm-2 col-xs-2 lazy-img">
-                                                <img src data-url="image/alphaprotocol.jpg" class="img-responsive">
+                                                <img src data-url="BuscaImagem?id=${produto.id}" alt="${produto.nome}" class="img-responsive">
                                             </div>
                                             <div class="col-md-11 col-sm-10 col-xs-10">
                                                 <div class="col-md-4 col-xs-12">
-                                                    <p>Alpha Protocol - PS3</p>
+                                                    <p>${produto.nome}</p>
                                                 </div>
                                                 <div class="col-md-4 col-xs-12">
-                                                    <p>Vendido e Entregue por <b>Division Games</b></p>
+                                                    <p>Vendido e Entregue por <b>${produto.fornecedor}</b></p>
                                                 </div>
                                                 <div class="col-md-2 col-xs-6">
-                                                    <p>Quantidade: 1</p>
+                                                    <p>Quantidade: ${produto.qtd}</p>
                                                 </div>
                                                 <div class="col-md-2 col-xs-6 text-right">
-                                                    <p><b>R$ 120,00</b></p>
+                                                    <p><b><fmt:formatNumber type="currency" value="${produto.subtotal}" /></b></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr>
+                                        
+                                        <c:if test="${contador.count < sessionScope.carrinho.size()}" >
+                                        
+                                        	<hr />
+                                        
+                                        </c:if>
+                                        
+                                        
+									</c:forEach>
+									
                                         <div class="row">
                                             <div class="col-md-7 col-sm-6 col-xs-12"></div>
                                             <div class="col-md-5 col-sm-6 col-xs-12">
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
-                                                            <td class="lead">1 produto:</td>
-                                                            <td class="lead">R$ 120,00</td>
+                                                            <!--td class="lead">1 produto:</td>
+                                                            <td class="lead">R$ 133,00</td-->
                                                         </tr>
                                                         <tr>
-                                                            <td class="lead">SubTotal:</td>
-                                                            <td class="lead">R$ 120,00</td>
+                                                            <!--td class="lead">SubTotal:</td>
+                                                            <td class="lead">R$ 120,00</td-->
                                                         </tr>
                                                         <tr>
+                                                        	<td></td>
                                                             <td class="lead"><b>Total:</b></td>
-                                                            <td class="lead"><b>R$ 120,00</b></td>
+                                                            <td class="lead"><b><fmt:formatNumber type="currency" value="${total}" /></b></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -370,7 +395,7 @@
                                                                 <span>Boleto Bancário</span>
                                                             </li>
                                                             <li>
-                                                                <span>Valor Total RS 120,00</span>
+                                                                <span><fmt:formatNumber type="currency" value="${total}" /></span>
                                                             </li>
                                                         </ul>
                                                     </div>
